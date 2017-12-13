@@ -1,10 +1,9 @@
 {
-  "name": "coreui-angular",
-  "version": "1.0.0-alpha.6",
-  "description": "Open Source Bootstrap Admin Template",
+  "name": "my_an_web",
+  "version": "1.0.0",
+  "description": "aferica的个人网站",
   "author": "",
-  "url": "http://coreui.io",
-  "copyright": "Copyright 2017 creativeLabs Łukasz Holeczek",
+  "copyright": "Copyright 2017 by aferica",
   "license": "MIT",
   "scripts": {
     "ng": "ng",
