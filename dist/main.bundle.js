@@ -387,7 +387,7 @@ var BookRankComponent = (function () {
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  Hello World!\n</div>\n"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
