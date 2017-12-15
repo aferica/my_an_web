@@ -58,27 +58,29 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__ = __webpack_require__("../../../../_@angular_platform-browser@4.3.4@@angular/platform-browser/@angular/platform-browser.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../../_@angular_common@4.3.4@@angular/common/@angular/common.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_dropdown__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/dropdown/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_tabs__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tabs/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__shared_nav_dropdown_directive__ = __webpack_require__("../../../../../src/app/shared/nav-dropdown.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_charts_ng2_charts__ = __webpack_require__("../../../../_ng2-charts@1.6.0@ng2-charts/ng2-charts.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_7_ng2_charts_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_sidebar_directive__ = __webpack_require__("../../../../../src/app/shared/sidebar.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_aside_directive__ = __webpack_require__("../../../../../src/app/shared/aside.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_breadcrumb_component__ = __webpack_require__("../../../../../src/app/shared/breadcrumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__layouts_full_layout_component__ = __webpack_require__("../../../../../src/app/layouts/full-layout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__books_rank_rank_component__ = __webpack_require__("../../../../../src/app/books/rank/rank.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__books_hot_hot_component__ = __webpack_require__("../../../../../src/app/books/hot/hot.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__books_history_history_component__ = __webpack_require__("../../../../../src/app/books/history/history.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../../_@angular_http@4.3.4@@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_dropdown__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/dropdown/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_tabs__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tabs/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_nav_dropdown_directive__ = __webpack_require__("../../../../../src/app/shared/nav-dropdown.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__ = __webpack_require__("../../../../_ng2-charts@1.6.0@ng2-charts/ng2-charts.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_sidebar_directive__ = __webpack_require__("../../../../../src/app/shared/sidebar.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_aside_directive__ = __webpack_require__("../../../../../src/app/shared/aside.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_breadcrumb_component__ = __webpack_require__("../../../../../src/app/shared/breadcrumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__layouts_full_layout_component__ = __webpack_require__("../../../../../src/app/layouts/full-layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__books_rank_rank_component__ = __webpack_require__("../../../../../src/app/books/rank/rank.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__books_hot_hot_component__ = __webpack_require__("../../../../../src/app/books/hot/hot.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__books_history_history_component__ = __webpack_require__("../../../../../src/app/books/history/history.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
 
 
 
@@ -105,28 +107,29 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_11__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_4_ngx_bootstrap_dropdown__["a" /* BsDropdownModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_tabs__["a" /* TabsModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_7_ng2_charts_ng2_charts__["ChartsModule"]
+                __WEBPACK_IMPORTED_MODULE_12__app_routing__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_dropdown__["a" /* BsDropdownModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_tabs__["a" /* TabsModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__["ChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */]
             ],
             declarations: [
-                __WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_12__layouts_full_layout_component__["a" /* FullLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_6__shared_nav_dropdown_directive__["a" /* NAV_DROPDOWN_DIRECTIVES */],
-                __WEBPACK_IMPORTED_MODULE_10__shared_breadcrumb_component__["a" /* BreadcrumbsComponent */],
-                __WEBPACK_IMPORTED_MODULE_8__shared_sidebar_directive__["a" /* SIDEBAR_TOGGLE_DIRECTIVES */],
-                __WEBPACK_IMPORTED_MODULE_9__shared_aside_directive__["a" /* AsideToggleDirective */],
-                __WEBPACK_IMPORTED_MODULE_13__dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_14__books_rank_rank_component__["a" /* BookRankComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__books_hot_hot_component__["a" /* BookHotComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__books_history_history_component__["a" /* BookHistoryComponent */]
+                __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
+                __WEBPACK_IMPORTED_MODULE_13__layouts_full_layout_component__["a" /* FullLayoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__shared_nav_dropdown_directive__["a" /* NAV_DROPDOWN_DIRECTIVES */],
+                __WEBPACK_IMPORTED_MODULE_11__shared_breadcrumb_component__["a" /* BreadcrumbsComponent */],
+                __WEBPACK_IMPORTED_MODULE_9__shared_sidebar_directive__["a" /* SIDEBAR_TOGGLE_DIRECTIVES */],
+                __WEBPACK_IMPORTED_MODULE_10__shared_aside_directive__["a" /* AsideToggleDirective */],
+                __WEBPACK_IMPORTED_MODULE_14__dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_15__books_rank_rank_component__["a" /* BookRankComponent */],
+                __WEBPACK_IMPORTED_MODULE_16__books_hot_hot_component__["a" /* BookHotComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__books_history_history_component__["a" /* BookHistoryComponent */]
             ],
             providers: [{
                     provide: __WEBPACK_IMPORTED_MODULE_2__angular_common__["g" /* LocationStrategy */],
                     useClass: __WEBPACK_IMPORTED_MODULE_2__angular_common__["d" /* HashLocationStrategy */]
                 }],
-            bootstrap: [__WEBPACK_IMPORTED_MODULE_3__app_component__["a" /* AppComponent */]]
+            bootstrap: [__WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */]]
         })
     ], AppModule);
     return AppModule;
@@ -384,10 +387,90 @@ var BookRankComponent = (function () {
 
 /***/ }),
 
+/***/ "../../../../../src/app/config/apiConfig.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppConfig; });
+var AppConfig = {
+    API: 'http://39.108.63.38:3000/api/getboook/byurl',
+    static: 'http://statics.zhuishushenqi.com',
+    category: {
+        // 带书籍数量的父分类
+        categoryWithBookCount: 'http://api.zhuishushenqi.com/cats/lv2/statistics',
+        // 带子分类的父分类
+        categoryWithSubCategories: 'http://api.zhuishushenqi.com/cats/lv2',
+        // 分类详情: 带着书籍
+        categoryInfo: 'http://api.zhuishushenqi.com/book/by-categories'
+        // categoryInfo: 'http://novel.juhe.im/category-info'
+    },
+    book: {
+        // 书籍详情
+        bookInfo: 'http://api.zhuishushenqi.com/book',
+        // 相关推荐
+        relatedRecommendedBooks: 'http://api.zhuishushenqi.com/book',
+        // 作者名下的书籍
+        authorBooks: 'http://api02u58f.zhuishushenqi.com/book/accurate-search',
+        // 书籍章节内容
+        bookChapters: 'http://api.zhuishushenqi.com/mix-atoc',
+        // 书源
+        bookSources: 'http://api.zhuishushenqi.com/atoc',
+        // 章节内容:id 单章id
+        chapterContent: 'http://chapter2.zhuishushenqi.com/chapter',
+        // 书籍搜索 可以搜索作者但是不精确
+        bookSearch: 'http://api.zhuishushenqi.com/book/fuzzy-search' //query ?query=凡人修仙传
+    },
+    rank: {
+        // 排名分类
+        rankCategory: 'http://api.zhuishushenqi.com/ranking/gender',
+        // 排名详情
+        rankInfo: 'http://api.zhuishushenqi.com/ranking' // id: rank id
+    },
+    comment: {
+        /**评论详情
+         * @param book: {bookId},
+         * @param sort: (updated|created|comment-count),
+         * @param start,
+         * @param limit
+         */
+        commentInfo: 'http://api.zhuishushenqi.com/post/review/by-book',
+    },
+    bookList: {
+        //书单
+        /**
+         * query string: {
+         *     sort: (collectorCount|created),
+         *     duration: (last-seven-days|all),
+         *    gender: (male|female),
+         *     tag: (有点多),
+         *     start
+         *   }
+         *
+         *            说明:
+         *
+         *            本周最热的query是: sort=collectorCount&duration=last-seven-days&start=0
+         *            最新发布是: sort=created&duration=all
+         *            最多收藏是: sort=collectorCount&duration=all
+         *
+         */
+        bookList: 'http://api.zhuishushenqi.com/book-list',
+        //书单详情
+        bookListInfo: 'http://api.zhuishushenqi.com/book-list/' //书单ID
+    },
+    photo: {
+        getPictureByTagsOr: 'http://39.108.63.38:3000/api/picture/getPictureByTagsOr',
+        getPictureByTagsAnd: 'http://39.108.63.38:3000/api/picture/getPictureByTagsAnd',
+        getPictureById: 'http://39.108.63.38:3000/api/picture/getPicture'
+    }
+};
+//# sourceMappingURL=apiConfig.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12\">\n      holle\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>小说排行榜100名</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n          <li *ngFor=\"let book of books\" class=\"list-group-item\">\n              <a (click)=\"viewThisPicture(picture._id)\">{{book.title}}</a>\n              <a (click)=\"viewThisPicture(picture._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n          </li>\n      </div>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -397,6 +480,7 @@ module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_book_service__ = __webpack_require__("../../../../../src/app/service/book.service.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -407,19 +491,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
 var DashboardComponent = (function () {
-    function DashboardComponent() {
+    function DashboardComponent(bookService) {
+        this.bookService = bookService;
+        this.books = [];
     }
     DashboardComponent.prototype.ngOnInit = function () {
+        this.getRankBooks();
+    };
+    DashboardComponent.prototype.getRankBooks = function () {
+        var _this = this;
+        this.bookService.getRankBooks().subscribe(function (res) {
+            console.log(res);
+            if (res != null && res.ok) {
+                _this.books = res.ranking.books;
+            }
+        });
     };
     DashboardComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
-            template: __webpack_require__("../../../../../src/app/dashboard/dashboard.component.html")
+            template: __webpack_require__("../../../../../src/app/dashboard/dashboard.component.html"),
+            providers: [__WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]) === "function" && _a || Object])
     ], DashboardComponent);
     return DashboardComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=dashboard.component.js.map
@@ -470,6 +569,56 @@ var FullLayoutComponent = (function () {
 }());
 
 //# sourceMappingURL=full-layout.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/book.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../../_@angular_http@4.3.4@@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../_rxjs@5.4.3@rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var BookService = (function () {
+    function BookService(http) {
+        this.http = http;
+        this.API = __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].API;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'charset': 'UTF-8'
+        });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+    }
+    BookService.prototype.getRankBooks = function () {
+        var params = new URLSearchParams;
+        return this.http.get(this.API + '?url=' + __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].rank.rankInfo + "/54d42d92321052167dfb75e3")
+            .map(function (res) { return res.json(); });
+    };
+    BookService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    ], BookService);
+    return BookService;
+    var _a;
+}());
+
+//# sourceMappingURL=book.service.js.map
 
 /***/ }),
 

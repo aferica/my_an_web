@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Jsonp, Headers, RequestOptions, Response, Http } from '@angular/http';
+import { Headers, RequestOptions, Response, Http } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -15,15 +15,13 @@ export class BookService {
     'charset': 'UTF-8'});
   private options = new RequestOptions({ headers: this.headers });
 
-  constructor(private jsonp: Jsonp,
-              private http: Http) { }
+  constructor( private http: Http) { }
   
 
-  getBooks(): Observable<any> {
+  getRankBooks(): Observable<any> {
 
     let params = new URLSearchParams;
-    let url = 'http://api.zhuishushenqi.com/book/by-categories?major=%E9%83%BD%E5%B8%82';
-    return this.http.get(this.API + '?url=' + url)
+    return this.http.get(this.API + '?url=' + AppConfig.rank.rankInfo + "/54d42d92321052167dfb75e3")
       .map(res => res.json());
   }
 
