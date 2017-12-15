@@ -394,6 +394,7 @@ var BookRankComponent = (function () {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppConfig; });
 var AppConfig = {
     API: 'http://39.108.63.38:3000/api/getboook/byurl',
+    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl',
     static: 'http://statics.zhuishushenqi.com',
     category: {
         // 带书籍数量的父分类
@@ -470,7 +471,7 @@ var AppConfig = {
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>小说排行榜100名</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n          <li *ngFor=\"let book of books\" class=\"list-group-item\">\n              <a (click)=\"viewThisPicture(picture._id)\">{{book.title}}</a>\n              <a (click)=\"viewThisPicture(picture._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n          </li>\n      </div>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>小说排行榜100名</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n        <a href=\"#\"  *ngFor=\"let book of hotThreeBook; let i = index;\" class=\"list-group-item\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-xs-4\">\n                <img src=\"{{imgApi}}?url={{staticImg}}{{book.cover}}\" height=\"100\" width=\"80\"/>\n            </div>\n            <div class=\"col-md-6 col-xs-8\">\n                <h4>\n                    <span>{{book.title}}</span>\n                </h4>\n                <p>\n                    <a>{{book.author}}</a> \n                </p>\n            </div>\n          </div>\n        </a>\n        <li *ngFor=\"let book of books; let i = index;\" class=\"list-group-item\">\n            <a (click)=\"viewThisPicture(picture._id)\">{{i + 4}}.  {{book.title}}</a>\n            <a (click)=\"viewThisPicture(picture._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n        </li>\n      </div>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -481,6 +482,7 @@ module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n 
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_book_service__ = __webpack_require__("../../../../../src/app/service/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -492,10 +494,14 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 
 
+
 var DashboardComponent = (function () {
     function DashboardComponent(bookService) {
         this.bookService = bookService;
+        this.hotThreeBook = [];
         this.books = [];
+        this.imgApi = __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].IMGAPI;
+        this.staticImg = __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].static;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         this.getRankBooks();
@@ -505,7 +511,8 @@ var DashboardComponent = (function () {
         this.bookService.getRankBooks().subscribe(function (res) {
             console.log(res);
             if (res != null && res.ok) {
-                _this.books = res.ranking.books;
+                _this.hotThreeBook = res.ranking.books.slice(0, 3);
+                _this.books = res.ranking.books.slice(3, 101);
             }
         });
     };

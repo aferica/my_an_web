@@ -7,10 +7,25 @@
       </header>
       <br/>
       <div class="list-group">
-          <li *ngFor="let book of books" class="list-group-item">
-              <a (click)="viewThisPicture(picture._id)">{{book.title}}</a>
-              <a (click)="viewThisPicture(picture._id)"><span class="pull-right">{{book.author}}</span></a>
-          </li>
+        <a href="#"  *ngFor="let book of hotThreeBook; let i = index;" class="list-group-item">
+          <div class="row">
+            <div class="col-md-6 col-xs-4">
+                <img src="{{imgApi}}?url={{staticImg}}{{book.cover}}" height="100" width="80"/>
+            </div>
+            <div class="col-md-6 col-xs-8">
+                <h4>
+                    <span>{{book.title}}</span>
+                </h4>
+                <p>
+                    <a>{{book.author}}</a> 
+                </p>
+            </div>
+          </div>
+        </a>
+        <li *ngFor="let book of books; let i = index;" class="list-group-item">
+            <a (click)="viewThisPicture(picture._id)">{{i + 4}}.  {{book.title}}</a>
+            <a (click)="viewThisPicture(picture._id)"><span class="pull-right">{{book.author}}</span></a>
+        </li>
       </div>
     </div>
     <div class="col-md-4 col-xs-12 card">
