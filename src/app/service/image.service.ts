@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map';
 import { AppConfig } from '../config/apiConfig';
 
 @Injectable()
-export class BookService {
+export class ImageService {
 
   private API = AppConfig.API;
   private headers = new Headers({ 
@@ -18,18 +18,19 @@ export class BookService {
   constructor( private http: Http) { }
   
 
-  getRankBooks(id): Observable<any> {
+  getHotImages(): Observable<any> {
 
     let params = new URLSearchParams;
-    return this.http.get(this.API  + AppConfig.rank.rankInfo + "/" + id)
+    return this.http.get(AppConfig.photo.getPictureByTagsOr + '?tags=性感,推女神&limit=100' )
       .map(res => res.json());
   }
 
-  getAllRanks(): Observable<any> {
-    
-    let params = new URLSearchParams;
-    return this.http.get(this.API  + AppConfig.rank.rankCategory )
-      .map(res => res.json());
+  getImageView(id): Observable<any> {
+    return this.http.get(AppConfig.photo.getPictureById + '?_id=' + id).map(res => res.json());
+  }
+
+  getImagesByTagOr(tag): Observable<any> {
+    return this.http.get(AppConfig.photo.getPictureByTagsOr + '?tags=' + tag).map(res => res.json());
   }
 
 }

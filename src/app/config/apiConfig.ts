@@ -1,7 +1,7 @@
 export const AppConfig = {
 
-    API: 'http://39.108.63.38:3000/api/getboook/byurl',
-    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl',
+    API: 'http://39.108.63.38:3000/api/getboook/byurl?url=',
+    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl?url=',
 
     static:'http://statics.zhuishushenqi.com',
     category: {

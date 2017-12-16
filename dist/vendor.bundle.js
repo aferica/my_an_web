@@ -90753,6 +90753,407 @@ __export(__webpack_require__("../../../../_ng2-charts@1.6.0@ng2-charts/index.js"
 
 /***/ }),
 
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Direction */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__utils__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__carousel_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.config.js");
+// todo: add animation
+
+
+
+var Direction;
+(function (Direction) {
+    Direction[Direction["UNKNOWN"] = 0] = "UNKNOWN";
+    Direction[Direction["NEXT"] = 1] = "NEXT";
+    Direction[Direction["PREV"] = 2] = "PREV";
+})(Direction || (Direction = {}));
+/**
+ * Base element to create carousel
+ */
+var CarouselComponent = (function () {
+    function CarouselComponent(config) {
+        /** Will be emitted when active slide has been changed. Part of two-way-bindable [(activeSlide)] property */
+        this.activeSlideChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"](false);
+        this._slides = new __WEBPACK_IMPORTED_MODULE_1__utils__["a" /* LinkedList */]();
+        this.destroyed = false;
+        Object.assign(this, config);
+    }
+    Object.defineProperty(CarouselComponent.prototype, "activeSlide", {
+        get: function () {
+            return this._currentActiveSlide;
+        },
+        /** Index of currently displayed slide(started for 0) */
+        set: function (index) {
+            if (this._slides.length && index !== this._currentActiveSlide) {
+                this._select(index);
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CarouselComponent.prototype, "interval", {
+        /**
+         * Delay of item cycling in milliseconds. If false, carousel won't cycle automatically.
+         */
+        get: function () {
+            return this._interval;
+        },
+        set: function (value) {
+            this._interval = value;
+            this.restartTimer();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CarouselComponent.prototype, "slides", {
+        get: function () {
+            return this._slides.toArray();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(CarouselComponent.prototype, "isBs4", {
+        get: function () {
+            return !Object(__WEBPACK_IMPORTED_MODULE_1__utils__["b" /* isBs3 */])();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    CarouselComponent.prototype.ngOnDestroy = function () {
+        this.destroyed = true;
+    };
+    /**
+     * Adds new slide. If this slide is first in collection - set it as active and starts auto changing
+     * @param slide
+     */
+    CarouselComponent.prototype.addSlide = function (slide) {
+        this._slides.add(slide);
+        if (this._slides.length === 1) {
+            this._currentActiveSlide = void 0;
+            this.activeSlide = 0;
+            this.play();
+        }
+    };
+    /**
+     * Removes specified slide. If this slide is active - will roll to another slide
+     * @param slide
+     */
+    CarouselComponent.prototype.removeSlide = function (slide) {
+        var _this = this;
+        var remIndex = this._slides.indexOf(slide);
+        if (this._currentActiveSlide === remIndex) {
+            // removing of active slide
+            var nextSlideIndex_1 = void 0;
+            if (this._slides.length > 1) {
+                // if this slide last - will roll to first slide, if noWrap flag is FALSE or to previous, if noWrap is TRUE
+                // in case, if this slide in middle of collection, index of next slide is same to removed
+                nextSlideIndex_1 = !this.isLast(remIndex) ? remIndex :
+                    this.noWrap ? remIndex - 1 : 0;
+            }
+            this._slides.remove(remIndex);
+            // prevents exception with changing some value after checking
+            setTimeout(function () {
+                _this._select(nextSlideIndex_1);
+            }, 0);
+        }
+        else {
+            this._slides.remove(remIndex);
+            var currentSlideIndex_1 = this.getCurrentSlideIndex();
+            setTimeout(function () {
+                // after removing, need to actualize index of current active slide
+                _this._currentActiveSlide = currentSlideIndex_1;
+                _this.activeSlideChange.emit(_this._currentActiveSlide);
+            }, 0);
+        }
+    };
+    /**
+     * Rolling to next slide
+     * @param force: {boolean} if true - will ignore noWrap flag
+     */
+    CarouselComponent.prototype.nextSlide = function (force) {
+        if (force === void 0) { force = false; }
+        this.activeSlide = this.findNextSlideIndex(Direction.NEXT, force);
+    };
+    /**
+     * Rolling to previous slide
+     * @param force: {boolean} if true - will ignore noWrap flag
+     */
+    CarouselComponent.prototype.previousSlide = function (force) {
+        if (force === void 0) { force = false; }
+        this.activeSlide = this.findNextSlideIndex(Direction.PREV, force);
+    };
+    /**
+     * Rolling to specified slide
+     * @param index: {number} index of slide, which must be shown
+     */
+    CarouselComponent.prototype.selectSlide = function (index) {
+        this.activeSlide = index;
+    };
+    /**
+     * Starts a auto changing of slides
+     */
+    CarouselComponent.prototype.play = function () {
+        if (!this.isPlaying) {
+            this.isPlaying = true;
+            this.restartTimer();
+        }
+    };
+    /**
+     * Stops a auto changing of slides
+     */
+    CarouselComponent.prototype.pause = function () {
+        if (!this.noPause) {
+            this.isPlaying = false;
+            this.resetTimer();
+        }
+    };
+    /**
+     * Finds and returns index of currently displayed slide
+     * @returns {number}
+     */
+    CarouselComponent.prototype.getCurrentSlideIndex = function () {
+        return this._slides.findIndex(function (slide) { return slide.active; });
+    };
+    /**
+     * Defines, whether the specified index is last in collection
+     * @param index
+     * @returns {boolean}
+     */
+    CarouselComponent.prototype.isLast = function (index) {
+        return index + 1 >= this._slides.length;
+    };
+    /**
+     * Defines next slide index, depending of direction
+     * @param direction: Direction(UNKNOWN|PREV|NEXT)
+     * @param force: {boolean} if TRUE - will ignore noWrap flag, else will return undefined if next slide require wrapping
+     * @returns {any}
+     */
+    CarouselComponent.prototype.findNextSlideIndex = function (direction, force) {
+        var nextSlideIndex = 0;
+        if (!force && (this.isLast(this.activeSlide) && direction !== Direction.PREV && this.noWrap)) {
+            return void 0;
+        }
+        switch (direction) {
+            case Direction.NEXT:
+                // if this is last slide, not force, looping is disabled and need to going forward - select current slide, as a next
+                nextSlideIndex = (!this.isLast(this._currentActiveSlide)) ? this._currentActiveSlide + 1 :
+                    (!force && this.noWrap) ? this._currentActiveSlide : 0;
+                break;
+            case Direction.PREV:
+                // if this is first slide, not force, looping is disabled and need to going backward - select current slide, as a next
+                nextSlideIndex = (this._currentActiveSlide > 0) ? this._currentActiveSlide - 1 :
+                    (!force && this.noWrap) ? this._currentActiveSlide : this._slides.length - 1;
+                break;
+            default:
+                throw new Error('Unknown direction');
+        }
+        return nextSlideIndex;
+    };
+    /**
+     * Sets a slide, which specified through index, as active
+     * @param index
+     * @private
+     */
+    CarouselComponent.prototype._select = function (index) {
+        if (isNaN(index)) {
+            this.pause();
+            return;
+        }
+        var currentSlide = this._slides.get(this._currentActiveSlide);
+        if (currentSlide) {
+            currentSlide.active = false;
+        }
+        var nextSlide = this._slides.get(index);
+        if (nextSlide) {
+            this._currentActiveSlide = index;
+            nextSlide.active = true;
+            this.activeSlide = index;
+            this.activeSlideChange.emit(index);
+        }
+    };
+    /**
+     * Starts loop of auto changing of slides
+     */
+    CarouselComponent.prototype.restartTimer = function () {
+        var _this = this;
+        this.resetTimer();
+        var interval = +this.interval;
+        if (!isNaN(interval) && interval > 0) {
+            this.currentInterval = setInterval(function () {
+                var nInterval = +_this.interval;
+                if (_this.isPlaying && !isNaN(_this.interval) && nInterval > 0 && _this.slides.length) {
+                    _this.nextSlide();
+                }
+                else {
+                    _this.pause();
+                }
+            }, interval);
+        }
+    };
+    /**
+     * Stops loop of auto changing of slides
+     */
+    CarouselComponent.prototype.resetTimer = function () {
+        if (this.currentInterval) {
+            clearInterval(this.currentInterval);
+            this.currentInterval = void 0;
+        }
+    };
+    CarouselComponent.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'carousel',
+                    template: "\n    <div (mouseenter)=\"pause()\" (mouseleave)=\"play()\" (mouseup)=\"play()\" class=\"carousel slide\">\n      <ol class=\"carousel-indicators\" *ngIf=\"slides.length > 1\">\n         <li *ngFor=\"let slidez of slides; let i = index;\" [class.active]=\"slidez.active === true\" (click)=\"selectSlide(i)\"></li>\n      </ol>\n      <div class=\"carousel-inner\"><ng-content></ng-content></div>\n      <a class=\"left carousel-control carousel-control-prev\" [class.disabled]=\"activeSlide === 0 && noWrap\" (click)=\"previousSlide()\" *ngIf=\"slides.length > 1\">\n        <span class=\"icon-prev carousel-control-prev-icon\" aria-hidden=\"true\"></span>\n        <span *ngIf=\"isBs4\" class=\"sr-only\">Previous</span>\n      </a>\n      <a class=\"right carousel-control carousel-control-next\" (click)=\"nextSlide()\"  [class.disabled]=\"isLast(activeSlide) && noWrap\" *ngIf=\"slides.length > 1\">\n        <span class=\"icon-next carousel-control-next-icon\" aria-hidden=\"true\"></span>\n        <span class=\"sr-only\">Next</span>\n      </a>\n    </div>\n  "
+                },] },
+    ];
+    /** @nocollapse */
+    CarouselComponent.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_2__carousel_config__["a" /* CarouselConfig */], },
+    ]; };
+    CarouselComponent.propDecorators = {
+        'noWrap': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'noPause': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'activeSlideChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'activeSlide': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'interval': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+    };
+    return CarouselComponent;
+}());
+//# sourceMappingURL=carousel.component.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.config.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselConfig; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+
+var CarouselConfig = (function () {
+    function CarouselConfig() {
+        /** Default interval of auto changing of slides */
+        this.interval = 5000;
+        /** Is loop of auto changing of slides can be paused */
+        this.noPause = false;
+        /** Is slides can wrap from the last to the first slide */
+        this.noWrap = false;
+    }
+    CarouselConfig.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"] },
+    ];
+    /** @nocollapse */
+    CarouselConfig.ctorParameters = function () { return []; };
+    return CarouselConfig;
+}());
+//# sourceMappingURL=carousel.config.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.module.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return CarouselModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__("../../../../_@angular_common@4.3.4@@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__carousel_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__slide_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/slide.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__carousel_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.config.js");
+
+
+
+
+
+var CarouselModule = (function () {
+    function CarouselModule() {
+    }
+    CarouselModule.forRoot = function () {
+        return { ngModule: CarouselModule, providers: [] };
+    };
+    CarouselModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_0__angular_common__["b" /* CommonModule */]],
+                    declarations: [__WEBPACK_IMPORTED_MODULE_3__slide_component__["a" /* SlideComponent */], __WEBPACK_IMPORTED_MODULE_2__carousel_component__["a" /* CarouselComponent */]],
+                    exports: [__WEBPACK_IMPORTED_MODULE_3__slide_component__["a" /* SlideComponent */], __WEBPACK_IMPORTED_MODULE_2__carousel_component__["a" /* CarouselComponent */]],
+                    providers: [__WEBPACK_IMPORTED_MODULE_4__carousel_config__["a" /* CarouselConfig */]]
+                },] },
+    ];
+    /** @nocollapse */
+    CarouselModule.ctorParameters = function () { return []; };
+    return CarouselModule;
+}());
+//# sourceMappingURL=carousel.module.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__carousel_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.component.js");
+/* unused harmony reexport CarouselComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel_module__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.module.js");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__carousel_module__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__slide_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/slide.component.js");
+/* unused harmony reexport SlideComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__carousel_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.config.js");
+/* unused harmony reexport CarouselConfig */
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/slide.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return SlideComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__carousel_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/carousel.component.js");
+
+
+var SlideComponent = (function () {
+    function SlideComponent(carousel) {
+        /** Wraps element by appropriate CSS classes */
+        this.addClass = true;
+        this.carousel = carousel;
+    }
+    /** Fires changes in container collection after adding a new slide instance */
+    SlideComponent.prototype.ngOnInit = function () {
+        this.carousel.addSlide(this);
+    };
+    /** Fires changes in container collection after removing of this slide instance */
+    SlideComponent.prototype.ngOnDestroy = function () {
+        this.carousel.removeSlide(this);
+    };
+    SlideComponent.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'slide',
+                    template: "\n    <div [class.active]=\"active\" class=\"item\">\n      <ng-content></ng-content>\n    </div>\n  "
+                },] },
+    ];
+    /** @nocollapse */
+    SlideComponent.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_1__carousel_component__["a" /* CarouselComponent */], },
+    ]; };
+    SlideComponent.propDecorators = {
+        'active': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostBinding"], args: ['class.active',] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'addClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostBinding"], args: ['class.item',] }, { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["HostBinding"], args: ['class.carousel-item',] },],
+    };
+    return SlideComponent;
+}());
+//# sourceMappingURL=slide.component.js.map
+
+/***/ }),
+
 /***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/component-loader/component-loader.class.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -92206,6 +92607,449 @@ var TabsetConfig = (function () {
 
 /***/ }),
 
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__tooltip_container_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip-container.component.js");
+/* unused harmony reexport TooltipContainerComponent */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tooltip_directive__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.directive.js");
+/* unused harmony reexport TooltipDirective */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip_module__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.module.js");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_2__tooltip_module__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tooltip_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.config.js");
+/* unused harmony reexport TooltipConfig */
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip-container.component.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TooltipContainerComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tooltip_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.config.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__utils_ng2_bootstrap_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/ng2-bootstrap-config.js");
+
+
+
+var TooltipContainerComponent = (function () {
+    function TooltipContainerComponent(config) {
+        Object.assign(this, config);
+    }
+    Object.defineProperty(TooltipContainerComponent.prototype, "isBs3", {
+        get: function () {
+            return Object(__WEBPACK_IMPORTED_MODULE_2__utils_ng2_bootstrap_config__["a" /* isBs3 */])();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    TooltipContainerComponent.prototype.ngAfterViewInit = function () {
+        this.classMap = { in: false, fade: false };
+        this.classMap[this.placement] = true;
+        this.classMap['tooltip-' + this.placement] = true;
+        this.classMap.in = true;
+        if (this.animation) {
+            this.classMap.fade = true;
+        }
+        if (this.containerClass) {
+            this.classMap[this.containerClass] = true;
+        }
+    };
+    TooltipContainerComponent.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"], args: [{
+                    selector: 'bs-tooltip-container',
+                    changeDetection: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ChangeDetectionStrategy"].OnPush,
+                    // tslint:disable-next-line
+                    host: {
+                        '[class]': '"tooltip in tooltip-" + placement + " " + placement + " " + containerClass',
+                        '[class.show]': '!isBs3',
+                        role: 'tooltip'
+                    },
+                    template: "\n    <div class=\"tooltip-arrow\"></div>\n    <div class=\"tooltip-inner\"><ng-content></ng-content></div>\n    "
+                },] },
+    ];
+    /** @nocollapse */
+    TooltipContainerComponent.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_1__tooltip_config__["a" /* TooltipConfig */], },
+    ]; };
+    return TooltipContainerComponent;
+}());
+//# sourceMappingURL=tooltip-container.component.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.config.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TooltipConfig; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+
+/** Default values provider for tooltip */
+var TooltipConfig = (function () {
+    function TooltipConfig() {
+        /** tooltip placement, supported positions: 'top', 'bottom', 'left', 'right' */
+        this.placement = 'top';
+        /** array of event names which triggers tooltip opening */
+        this.triggers = 'hover focus';
+    }
+    TooltipConfig.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"] },
+    ];
+    /** @nocollapse */
+    TooltipConfig.ctorParameters = function () { return []; };
+    return TooltipConfig;
+}());
+//# sourceMappingURL=tooltip.config.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.directive.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TooltipDirective; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__tooltip_container_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip-container.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.config.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__component_loader__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/component-loader/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_decorators__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/decorators.js");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+
+var TooltipDirective = (function () {
+    // tslint:disable-next-line
+    function TooltipDirective(_viewContainerRef, _renderer, _elementRef, cis, config) {
+        /** Fired when tooltip content changes */
+        this.tooltipChange = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        /**
+         * Css class for tooltip container
+         */
+        this.containerClass = '';
+        /** @deprecated - removed, will be added to configuration */
+        this._animation = true;
+        /** @deprecated */
+        this._delay = 0;
+        /** @deprecated */
+        this._fadeDuration = 150;
+        /** @deprecated */
+        this.tooltipStateChanged = new __WEBPACK_IMPORTED_MODULE_0__angular_core__["EventEmitter"]();
+        this._tooltip = cis
+            .createLoader(_elementRef, _viewContainerRef, _renderer)
+            .provide({ provide: __WEBPACK_IMPORTED_MODULE_2__tooltip_config__["a" /* TooltipConfig */], useValue: config });
+        Object.assign(this, config);
+        this.onShown = this._tooltip.onShown;
+        this.onHidden = this._tooltip.onHidden;
+    }
+    Object.defineProperty(TooltipDirective.prototype, "isOpen", {
+        /**
+         * Returns whether or not the tooltip is currently being shown
+         */
+        get: function () { return this._tooltip.isShown; },
+        set: function (value) {
+            if (value) {
+                this.show();
+            }
+            else {
+                this.hide();
+            }
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "htmlContent", {
+        /* tslint:disable */
+        /** @deprecated - please use `tooltip` instead */
+        set: function (value) {
+            console.warn('tooltipHtml was deprecated, please use `tooltip` instead');
+            this.tooltip = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_placement", {
+        /** @deprecated - please use `placement` instead */
+        set: function (value) {
+            console.warn('tooltipPlacement was deprecated, please use `placement` instead');
+            this.placement = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_isOpen", {
+        get: function () {
+            console.warn('tooltipIsOpen was deprecated, please use `isOpen` instead');
+            return this.isOpen;
+        },
+        /** @deprecated - please use `isOpen` instead*/
+        set: function (value) {
+            console.warn('tooltipIsOpen was deprecated, please use `isOpen` instead');
+            this.isOpen = value;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_enable", {
+        get: function () {
+            console.warn('tooltipEnable was deprecated, please use `isDisabled` instead');
+            return this.isDisabled === true;
+        },
+        /** @deprecated - please use `isDisabled` instead */
+        set: function (value) {
+            console.warn('tooltipEnable was deprecated, please use `isDisabled` instead');
+            this.isDisabled = value === true;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_appendToBody", {
+        get: function () {
+            console.warn('tooltipAppendToBody was deprecated, please use `container="body"` instead');
+            return this.container === 'body';
+        },
+        /** @deprecated - please use `container="body"` instead */
+        set: function (value) {
+            console.warn('tooltipAppendToBody was deprecated, please use `container="body"` instead');
+            this.container = value ? 'body' : this.container;
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_popupClass", {
+        /** @deprecated - will replaced with customClass */
+        set: function (value) {
+            console.warn('tooltipClass deprecated');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_tooltipContext", {
+        /** @deprecated - removed */
+        set: function (value) {
+            console.warn('tooltipContext deprecated');
+        },
+        enumerable: true,
+        configurable: true
+    });
+    Object.defineProperty(TooltipDirective.prototype, "_tooltipTrigger", {
+        /** @deprecated -  please use `triggers` instead */
+        get: function () {
+            console.warn('tooltipTrigger was deprecated, please use `triggers` instead');
+            return this.triggers;
+        },
+        set: function (value) {
+            console.warn('tooltipTrigger was deprecated, please use `triggers` instead');
+            this.triggers = (value || '').toString();
+        },
+        enumerable: true,
+        configurable: true
+    });
+    ;
+    ;
+    TooltipDirective.prototype.ngOnInit = function () {
+        var _this = this;
+        this._tooltip.listen({
+            triggers: this.triggers,
+            show: function () { return _this.show(); }
+        });
+        this.tooltipChange.subscribe(function (value) {
+            if (!value) {
+                _this._tooltip.hide();
+            }
+        });
+    };
+    /**
+     * Toggles an element’s tooltip. This is considered a “manual” triggering of
+     * the tooltip.
+     */
+    TooltipDirective.prototype.toggle = function () {
+        if (this.isOpen) {
+            return this.hide();
+        }
+        this.show();
+    };
+    /**
+     * Opens an element’s tooltip. This is considered a “manual” triggering of
+     * the tooltip.
+     */
+    TooltipDirective.prototype.show = function () {
+        var _this = this;
+        if (this.isOpen || this.isDisabled || this._delayTimeoutId || !this.tooltip) {
+            return;
+        }
+        var showTooltip = function () { return _this._tooltip
+            .attach(__WEBPACK_IMPORTED_MODULE_1__tooltip_container_component__["a" /* TooltipContainerComponent */])
+            .to(_this.container)
+            .position({ attachment: _this.placement })
+            .show({
+            content: _this.tooltip,
+            placement: _this.placement,
+            containerClass: _this.containerClass
+        }); };
+        if (this._delay) {
+            this._delayTimeoutId = setTimeout(function () { showTooltip(); }, this._delay);
+        }
+        else {
+            showTooltip();
+        }
+    };
+    /**
+     * Closes an element’s tooltip. This is considered a “manual” triggering of
+     * the tooltip.
+     */
+    TooltipDirective.prototype.hide = function () {
+        var _this = this;
+        if (this._delayTimeoutId) {
+            clearTimeout(this._delayTimeoutId);
+            this._delayTimeoutId = undefined;
+        }
+        if (!this._tooltip.isShown) {
+            return;
+        }
+        this._tooltip.instance.classMap.in = false;
+        setTimeout(function () {
+            _this._tooltip.hide();
+        }, this._fadeDuration);
+    };
+    TooltipDirective.prototype.ngOnDestroy = function () {
+        this._tooltip.dispose();
+    };
+    TooltipDirective.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Directive"], args: [{
+                    selector: '[tooltip], [tooltipHtml]',
+                    exportAs: 'bs-tooltip'
+                },] },
+    ];
+    /** @nocollapse */
+    TooltipDirective.ctorParameters = function () { return [
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ViewContainerRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Renderer"], },
+        { type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["ElementRef"], },
+        { type: __WEBPACK_IMPORTED_MODULE_3__component_loader__["a" /* ComponentLoaderFactory */], },
+        { type: __WEBPACK_IMPORTED_MODULE_2__tooltip_config__["a" /* TooltipConfig */], },
+    ]; };
+    TooltipDirective.propDecorators = {
+        'tooltip': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'tooltipChange': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'triggers': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'container': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'isOpen': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'isDisabled': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'containerClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"] },],
+        'onShown': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'onHidden': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+        'htmlContent': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipHtml',] },],
+        '_placement': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipPlacement',] },],
+        '_isOpen': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipIsOpen',] },],
+        '_enable': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipEnable',] },],
+        '_appendToBody': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipAppendToBody',] },],
+        '_animation': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipAnimation',] },],
+        '_popupClass': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipClass',] },],
+        '_tooltipContext': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipContext',] },],
+        '_delay': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipPopupDelay',] },],
+        '_fadeDuration': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipFadeDuration',] },],
+        '_tooltipTrigger': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Input"], args: ['tooltipTrigger',] },],
+        'tooltipStateChanged': [{ type: __WEBPACK_IMPORTED_MODULE_0__angular_core__["Output"] },],
+    };
+    __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_4__utils_decorators__["a" /* OnChange */])(), 
+        __metadata('design:type', Object)
+    ], TooltipDirective.prototype, "tooltip", void 0);
+    return TooltipDirective;
+}());
+//# sourceMappingURL=tooltip.directive.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.module.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return TooltipModule; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_common__ = __webpack_require__("../../../../_@angular_common@4.3.4@@angular/common/@angular/common.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__tooltip_container_component__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip-container.component.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__tooltip_directive__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.directive.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__tooltip_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/tooltip.config.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__component_loader__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/component-loader/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__positioning__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/positioning/index.js");
+
+
+
+
+
+
+
+var TooltipModule = (function () {
+    function TooltipModule() {
+    }
+    TooltipModule.forRoot = function () {
+        return {
+            ngModule: TooltipModule,
+            providers: [__WEBPACK_IMPORTED_MODULE_4__tooltip_config__["a" /* TooltipConfig */], __WEBPACK_IMPORTED_MODULE_5__component_loader__["a" /* ComponentLoaderFactory */], __WEBPACK_IMPORTED_MODULE_6__positioning__["a" /* PositioningService */]]
+        };
+    };
+    ;
+    TooltipModule.decorators = [
+        { type: __WEBPACK_IMPORTED_MODULE_1__angular_core__["NgModule"], args: [{
+                    imports: [__WEBPACK_IMPORTED_MODULE_0__angular_common__["b" /* CommonModule */]],
+                    declarations: [__WEBPACK_IMPORTED_MODULE_3__tooltip_directive__["a" /* TooltipDirective */], __WEBPACK_IMPORTED_MODULE_2__tooltip_container_component__["a" /* TooltipContainerComponent */]],
+                    exports: [__WEBPACK_IMPORTED_MODULE_3__tooltip_directive__["a" /* TooltipDirective */]],
+                    entryComponents: [__WEBPACK_IMPORTED_MODULE_2__tooltip_container_component__["a" /* TooltipContainerComponent */]]
+                },] },
+    ];
+    /** @nocollapse */
+    TooltipModule.ctorParameters = function () { return []; };
+    return TooltipModule;
+}());
+//# sourceMappingURL=tooltip.module.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/decorators.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (immutable) */ __webpack_exports__["a"] = OnChange;
+/*tslint:disable:no-invalid-this */
+function OnChange(defaultValue) {
+    var sufix = 'Change';
+    return function OnChangeHandler(target, propertyKey) {
+        var _key = " __" + propertyKey + "Value";
+        Object.defineProperty(target, propertyKey, {
+            get: function () { return this[_key]; },
+            set: function (value) {
+                var prevValue = this[_key];
+                this[_key] = value;
+                if (prevValue !== value && this[propertyKey + sufix]) {
+                    this[propertyKey + sufix].emit(value);
+                }
+            }
+        });
+    };
+}
+//# sourceMappingURL=decorators.js.map
+
+/***/ }),
+
 /***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/facade/browser.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -92247,6 +93091,277 @@ var History = win['History'];
 var Location = win['Location'];
 var EventListener = win['EventListener'];
 //# sourceMappingURL=browser.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/index.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__decorators__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/decorators.js");
+/* unused harmony reexport OnChange */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__linked_list_class__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/linked-list.class.js");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return __WEBPACK_IMPORTED_MODULE_1__linked_list_class__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__ng2_bootstrap_config__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/ng2-bootstrap-config.js");
+/* harmony reexport (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return __WEBPACK_IMPORTED_MODULE_2__ng2_bootstrap_config__["a"]; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__trigger_class__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/trigger.class.js");
+/* unused harmony reexport Trigger */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__utils_class__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/utils.class.js");
+/* unused harmony reexport Utils */
+
+
+
+
+
+//# sourceMappingURL=index.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/linked-list.class.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return LinkedList; });
+var LinkedList = (function () {
+    function LinkedList() {
+        this.length = 0;
+        this.asArray = [];
+    }
+    LinkedList.prototype.getNode = function (position) {
+        if (this.length === 0 || position < 0 || position >= this.length) {
+            throw new Error('Position is out of the list');
+        }
+        var current = this.head;
+        for (var index = 0; index < position; index++) {
+            current = current.next;
+        }
+        return current;
+    };
+    LinkedList.prototype.createInternalArrayRepresentation = function () {
+        var outArray = [];
+        var current = this.head;
+        while (current) {
+            outArray.push(current.value);
+            current = current.next;
+        }
+        this.asArray = outArray;
+    };
+    LinkedList.prototype.get = function (position) {
+        if (this.length === 0 || position < 0 || position >= this.length) {
+            return void 0;
+        }
+        var current = this.head;
+        for (var index = 0; index < position; index++) {
+            current = current.next;
+        }
+        return current.value;
+    };
+    LinkedList.prototype.add = function (value, position) {
+        if (position === void 0) { position = this.length; }
+        if (position < 0 || position > this.length) {
+            throw new Error('Position is out of the list');
+        }
+        var node = {
+            value: value,
+            next: undefined,
+            previous: undefined
+        };
+        if (this.length === 0) {
+            this.head = node;
+            this.tail = node;
+            this.current = node;
+        }
+        else {
+            if (position === 0) {
+                // first node
+                node.next = this.head;
+                this.head.previous = node;
+                this.head = node;
+            }
+            else if (position === this.length) {
+                // last node
+                this.tail.next = node;
+                node.previous = this.tail;
+                this.tail = node;
+            }
+            else {
+                // node in middle
+                var currentPreviousNode = this.getNode(position - 1);
+                var currentNextNode = currentPreviousNode.next;
+                currentPreviousNode.next = node;
+                currentNextNode.previous = node;
+                node.previous = currentPreviousNode;
+                node.next = currentNextNode;
+            }
+        }
+        this.length++;
+        this.createInternalArrayRepresentation();
+    };
+    LinkedList.prototype.remove = function (position) {
+        if (position === void 0) { position = 0; }
+        if (this.length === 0 || position < 0 || position >= this.length) {
+            throw new Error('Position is out of the list');
+        }
+        if (position === 0) {
+            // first node
+            this.head = this.head.next;
+            if (this.head) {
+                // there is no second node
+                this.head.previous = undefined;
+            }
+            else {
+                // there is no second node
+                this.tail = undefined;
+            }
+        }
+        else if (position === this.length - 1) {
+            // last node
+            this.tail = this.tail.previous;
+            this.tail.next = undefined;
+        }
+        else {
+            // middle node
+            var removedNode = this.getNode(position);
+            removedNode.next.previous = removedNode.previous;
+            removedNode.previous.next = removedNode.next;
+        }
+        this.length--;
+        this.createInternalArrayRepresentation();
+    };
+    LinkedList.prototype.set = function (position, value) {
+        if (this.length === 0 || position < 0 || position >= this.length) {
+            throw new Error('Position is out of the list');
+        }
+        var node = this.getNode(position);
+        node.value = value;
+        this.createInternalArrayRepresentation();
+    };
+    LinkedList.prototype.toArray = function () {
+        return this.asArray;
+    };
+    LinkedList.prototype.findAll = function (fn) {
+        var current = this.head;
+        var result = [];
+        for (var index = 0; index < this.length; index++) {
+            if (fn(current.value, index)) {
+                result.push({ index: index, value: current.value });
+            }
+            current = current.next;
+        }
+        return result;
+    };
+    // Array methods overriding start
+    LinkedList.prototype.push = function () {
+        var _this = this;
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        args.forEach(function (arg) {
+            _this.add(arg);
+        });
+        return this.length;
+    };
+    LinkedList.prototype.pop = function () {
+        if (this.length === 0) {
+            return undefined;
+        }
+        var last = this.tail;
+        this.remove(this.length - 1);
+        return last.value;
+    };
+    LinkedList.prototype.unshift = function () {
+        var _this = this;
+        var args = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            args[_i - 0] = arguments[_i];
+        }
+        args.reverse();
+        args.forEach(function (arg) {
+            _this.add(arg, 0);
+        });
+        return this.length;
+    };
+    LinkedList.prototype.shift = function () {
+        if (this.length === 0) {
+            return undefined;
+        }
+        var lastItem = this.head.value;
+        this.remove();
+        return lastItem;
+    };
+    LinkedList.prototype.forEach = function (fn) {
+        var current = this.head;
+        for (var index = 0; index < this.length; index++) {
+            fn(current.value, index);
+            current = current.next;
+        }
+    };
+    LinkedList.prototype.indexOf = function (value) {
+        var current = this.head;
+        var position = 0;
+        for (var index = 0; index < this.length; index++) {
+            if (current.value === value) {
+                position = index;
+                break;
+            }
+            current = current.next;
+        }
+        return position;
+    };
+    LinkedList.prototype.some = function (fn) {
+        var current = this.head;
+        var result = false;
+        while (current && !result) {
+            if (fn(current.value)) {
+                result = true;
+                break;
+            }
+            current = current.next;
+        }
+        return result;
+    };
+    LinkedList.prototype.every = function (fn) {
+        var current = this.head;
+        var result = true;
+        while (current && result) {
+            if (!fn(current.value)) {
+                result = false;
+            }
+            current = current.next;
+        }
+        return result;
+    };
+    LinkedList.prototype.toString = function () {
+        return '[Linked List]';
+    };
+    LinkedList.prototype.find = function (fn) {
+        var current = this.head;
+        var result;
+        for (var index = 0; index < this.length; index++) {
+            if (fn(current.value, index)) {
+                result = current.value;
+                break;
+            }
+            current = current.next;
+        }
+        return result;
+    };
+    LinkedList.prototype.findIndex = function (fn) {
+        var current = this.head;
+        var result;
+        for (var index = 0; index < this.length; index++) {
+            if (fn(current.value, index)) {
+                result = index;
+                break;
+            }
+            current = current.next;
+        }
+        return result;
+    };
+    return LinkedList;
+}());
+//# sourceMappingURL=linked-list.class.js.map
 
 /***/ }),
 
@@ -92335,6 +93450,36 @@ function listenToTriggers(renderer, target, triggers, showFn, hideFn, toggleFn) 
     return function () { listeners.forEach(function (unsubscribeFn) { return unsubscribeFn(); }); };
 }
 //# sourceMappingURL=triggers.js.map
+
+/***/ }),
+
+/***/ "../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/utils.class.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export Utils */
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__facade_browser__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/utils/facade/browser.js");
+
+var Utils = (function () {
+    function Utils() {
+    }
+    Utils.reflow = function (element) {
+        (function (bs) { return bs; })(element.offsetHeight);
+    };
+    // source: https://github.com/jquery/jquery/blob/master/src/css/var/getStyles.js
+    Utils.getStyles = function (elem) {
+        // Support: IE <=11 only, Firefox <=30 (#15098, #14150)
+        // IE throws on elements created in popups
+        // FF meanwhile throws on frame elements through "defaultView.getComputedStyle"
+        var view = elem.ownerDocument.defaultView;
+        if (!view || !view.opener) {
+            view = __WEBPACK_IMPORTED_MODULE_0__facade_browser__["a" /* window */];
+        }
+        return view.getComputedStyle(elem);
+    };
+    return Utils;
+}());
+//# sourceMappingURL=utils.class.js.map
 
 /***/ }),
 

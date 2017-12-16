@@ -1,3 +1,46 @@
-<p>
-  rank works!
-</p>
+<div>
+  <div class="card col-12">
+		<header><h5>男生小说</h5></header>
+		<br/>
+		<div  class="row">
+			<div *ngFor="let male of males" class="col-md-3 col-sm-4 col-xs-12 card">
+				<br/>
+				<header>
+					<img src="{{male.icon}}" width="30" height="30"/>
+					<a>{{male.title}}</a>
+					<span class="pull-right">更多...</span>
+				</header>
+				<br/>
+				<div class="list-group" style="font-size:14">
+					<li *ngFor="let book of male.books; let i = index;" class="list-group-item">
+							<a (click)="viewThisPicture(book._id)">{{i + 1}}.  {{book.title}}</a>
+							<a (click)="viewThisPicture(book._id)"><span class="pull-right">{{book.author}}</span></a>
+					</li>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div>
+		<div class="card col-12">
+				<br/>
+				<header><h5>女生小说</h5></header>
+				<div class="row">
+						<div *ngFor="let female of females" class="col-md-3 col-sm-4 col-xs-12 card">
+								<br/>
+								<header>
+									<img src="{{female.icon}}" width="30" height="30"/>
+									<a>{{female.title}}</a>
+									<span class="pull-right">更多...</span>
+								</header>
+								<br/>
+								<div class="list-group" style="font-size:14">
+									<li *ngFor="let book of female.books; let i = index;" class="list-group-item">
+											<a (click)="viewThisPicture(book._id)">{{i + 1}}.  {{book.title}}</a>
+											<a (click)="viewThisPicture(book._id)"><span class="pull-right">{{book.author}}</span></a>
+									</li>
+								</div>
+						</div>
+				</div>
+			</div>
+</div>

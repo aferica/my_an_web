@@ -60,20 +60,24 @@ var AppComponent = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__angular_common__ = __webpack_require__("../../../../_@angular_common@4.3.4@@angular/common/@angular/common.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__angular_http__ = __webpack_require__("../../../../_@angular_http@4.3.4@@angular/http/@angular/http.es5.js");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__app_component__ = __webpack_require__("../../../../../src/app/app.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_dropdown__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/dropdown/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_tabs__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tabs/index.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_nav_dropdown_directive__ = __webpack_require__("../../../../../src/app/shared/nav-dropdown.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__ = __webpack_require__("../../../../_ng2-charts@1.6.0@ng2-charts/ng2-charts.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_sidebar_directive__ = __webpack_require__("../../../../../src/app/shared/sidebar.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10__shared_aside_directive__ = __webpack_require__("../../../../../src/app/shared/aside.directive.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11__shared_breadcrumb_component__ = __webpack_require__("../../../../../src/app/shared/breadcrumb.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13__layouts_full_layout_component__ = __webpack_require__("../../../../../src/app/layouts/full-layout.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/dashboard/dashboard.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__books_rank_rank_component__ = __webpack_require__("../../../../../src/app/books/rank/rank.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__books_hot_hot_component__ = __webpack_require__("../../../../../src/app/books/hot/hot.component.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__books_history_history_component__ = __webpack_require__("../../../../../src/app/books/history/history.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__shared_nav_dropdown_directive__ = __webpack_require__("../../../../../src/app/shared/nav-dropdown.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_charts_ng2_charts__ = __webpack_require__("../../../../_ng2-charts@1.6.0@ng2-charts/ng2-charts.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_ng2_charts_ng2_charts___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_6_ng2_charts_ng2_charts__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__shared_sidebar_directive__ = __webpack_require__("../../../../../src/app/shared/sidebar.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__shared_aside_directive__ = __webpack_require__("../../../../../src/app/shared/aside.directive.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_9__shared_breadcrumb_component__ = __webpack_require__("../../../../../src/app/shared/breadcrumb.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_10_ngx_bootstrap_carousel__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/carousel/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_dropdown__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/dropdown/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_12_ngx_bootstrap_tabs__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tabs/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_13_ngx_bootstrap_tooltip__ = __webpack_require__("../../../../_ngx-bootstrap@1.8.1@ngx-bootstrap/tooltip/index.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_14__app_routing__ = __webpack_require__("../../../../../src/app/app.routing.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_15__layouts_full_layout_component__ = __webpack_require__("../../../../../src/app/layouts/full-layout.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_16__dashboard_dashboard_component__ = __webpack_require__("../../../../../src/app/dashboard/dashboard.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_17__books_rank_rank_component__ = __webpack_require__("../../../../../src/app/books/rank/rank.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_18__books_hot_hot_component__ = __webpack_require__("../../../../../src/app/books/hot/hot.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_19__books_history_history_component__ = __webpack_require__("../../../../../src/app/books/history/history.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_20__images_image_view_image_view_component__ = __webpack_require__("../../../../../src/app/images/image-view/image-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_21__images_image_type_image_type_component__ = __webpack_require__("../../../../../src/app/images/image-type/image-type.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -90,11 +94,16 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 
 
 
+// ngx-bootstrap component
+
+
 
 
 // Routing Module
 
 // Layouts
+
+
 
 
 
@@ -107,23 +116,27 @@ var AppModule = (function () {
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["NgModule"])({
             imports: [
                 __WEBPACK_IMPORTED_MODULE_1__angular_platform_browser__["a" /* BrowserModule */],
-                __WEBPACK_IMPORTED_MODULE_12__app_routing__["a" /* AppRoutingModule */],
-                __WEBPACK_IMPORTED_MODULE_5_ngx_bootstrap_dropdown__["a" /* BsDropdownModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_6_ngx_bootstrap_tabs__["a" /* TabsModule */].forRoot(),
-                __WEBPACK_IMPORTED_MODULE_8_ng2_charts_ng2_charts__["ChartsModule"],
+                __WEBPACK_IMPORTED_MODULE_14__app_routing__["a" /* AppRoutingModule */],
+                __WEBPACK_IMPORTED_MODULE_11_ngx_bootstrap_dropdown__["a" /* BsDropdownModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_10_ngx_bootstrap_carousel__["a" /* CarouselModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_12_ngx_bootstrap_tabs__["a" /* TabsModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_13_ngx_bootstrap_tooltip__["a" /* TooltipModule */].forRoot(),
+                __WEBPACK_IMPORTED_MODULE_6_ng2_charts_ng2_charts__["ChartsModule"],
                 __WEBPACK_IMPORTED_MODULE_3__angular_http__["c" /* HttpModule */]
             ],
             declarations: [
                 __WEBPACK_IMPORTED_MODULE_4__app_component__["a" /* AppComponent */],
-                __WEBPACK_IMPORTED_MODULE_13__layouts_full_layout_component__["a" /* FullLayoutComponent */],
-                __WEBPACK_IMPORTED_MODULE_7__shared_nav_dropdown_directive__["a" /* NAV_DROPDOWN_DIRECTIVES */],
-                __WEBPACK_IMPORTED_MODULE_11__shared_breadcrumb_component__["a" /* BreadcrumbsComponent */],
-                __WEBPACK_IMPORTED_MODULE_9__shared_sidebar_directive__["a" /* SIDEBAR_TOGGLE_DIRECTIVES */],
-                __WEBPACK_IMPORTED_MODULE_10__shared_aside_directive__["a" /* AsideToggleDirective */],
-                __WEBPACK_IMPORTED_MODULE_14__dashboard_dashboard_component__["a" /* DashboardComponent */],
-                __WEBPACK_IMPORTED_MODULE_15__books_rank_rank_component__["a" /* BookRankComponent */],
-                __WEBPACK_IMPORTED_MODULE_16__books_hot_hot_component__["a" /* BookHotComponent */],
-                __WEBPACK_IMPORTED_MODULE_17__books_history_history_component__["a" /* BookHistoryComponent */]
+                __WEBPACK_IMPORTED_MODULE_15__layouts_full_layout_component__["a" /* FullLayoutComponent */],
+                __WEBPACK_IMPORTED_MODULE_5__shared_nav_dropdown_directive__["a" /* NAV_DROPDOWN_DIRECTIVES */],
+                __WEBPACK_IMPORTED_MODULE_9__shared_breadcrumb_component__["a" /* BreadcrumbsComponent */],
+                __WEBPACK_IMPORTED_MODULE_7__shared_sidebar_directive__["a" /* SIDEBAR_TOGGLE_DIRECTIVES */],
+                __WEBPACK_IMPORTED_MODULE_8__shared_aside_directive__["a" /* AsideToggleDirective */],
+                __WEBPACK_IMPORTED_MODULE_16__dashboard_dashboard_component__["a" /* DashboardComponent */],
+                __WEBPACK_IMPORTED_MODULE_17__books_rank_rank_component__["a" /* BookRankComponent */],
+                __WEBPACK_IMPORTED_MODULE_18__books_hot_hot_component__["a" /* BookHotComponent */],
+                __WEBPACK_IMPORTED_MODULE_19__books_history_history_component__["a" /* BookHistoryComponent */],
+                __WEBPACK_IMPORTED_MODULE_20__images_image_view_image_view_component__["a" /* ImageViewComponent */],
+                __WEBPACK_IMPORTED_MODULE_21__images_image_type_image_type_component__["a" /* ImageTypeComponent */]
             ],
             providers: [{
                     provide: __WEBPACK_IMPORTED_MODULE_2__angular_common__["g" /* LocationStrategy */],
@@ -151,12 +164,16 @@ var AppModule = (function () {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__books_rank_rank_component__ = __webpack_require__("../../../../../src/app/books/rank/rank.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__books_hot_hot_component__ = __webpack_require__("../../../../../src/app/books/hot/hot.component.ts");
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__books_history_history_component__ = __webpack_require__("../../../../../src/app/books/history/history.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__images_image_view_image_view_component__ = __webpack_require__("../../../../../src/app/images/image-view/image-view.component.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__images_image_type_image_type_component__ = __webpack_require__("../../../../../src/app/images/image-type/image-type.component.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -187,6 +204,8 @@ var routes = [
     { path: 'books/rank', component: __WEBPACK_IMPORTED_MODULE_3__books_rank_rank_component__["a" /* BookRankComponent */], data: { title: '排行榜' } },
     { path: 'books/hot', component: __WEBPACK_IMPORTED_MODULE_4__books_hot_hot_component__["a" /* BookHotComponent */], data: { title: '热门' } },
     { path: 'books/history', component: __WEBPACK_IMPORTED_MODULE_5__books_history_history_component__["a" /* BookHistoryComponent */], data: { title: '阅读记录' } },
+    { path: 'images/image-view', component: __WEBPACK_IMPORTED_MODULE_6__images_image_view_image_view_component__["a" /* ImageViewComponent */], data: { title: '美图鉴赏' } },
+    { path: 'images/image-type', component: __WEBPACK_IMPORTED_MODULE_7__images_image_type_image_type_component__["a" /* ImageTypeComponent */], data: { title: '美图类别' } },
 ];
 var AppRoutingModule = (function () {
     function AppRoutingModule() {
@@ -329,7 +348,7 @@ var BookHotComponent = (function () {
 /***/ "../../../../../src/app/books/rank/rank.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  rank works!\n</p>\n"
+module.exports = "<div>\n  <div class=\"card col-12\">\n\t\t<header><h5>男生小说</h5></header>\n\t\t<br/>\n\t\t<div  class=\"row\">\n\t\t\t<div *ngFor=\"let male of males\" class=\"col-md-3 col-sm-4 col-xs-12 card\">\n\t\t\t\t<br/>\n\t\t\t\t<header>\n\t\t\t\t\t<img src=\"{{male.icon}}\" width=\"30\" height=\"30\"/>\n\t\t\t\t\t<a>{{male.title}}</a>\n\t\t\t\t\t<span class=\"pull-right\">更多...</span>\n\t\t\t\t</header>\n\t\t\t\t<br/>\n\t\t\t\t<div class=\"list-group\" style=\"font-size:14\">\n\t\t\t\t\t<li *ngFor=\"let book of male.books; let i = index;\" class=\"list-group-item\">\n\t\t\t\t\t\t\t<a (click)=\"viewThisPicture(book._id)\">{{i + 1}}.  {{book.title}}</a>\n\t\t\t\t\t\t\t<a (click)=\"viewThisPicture(book._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n\t\t\t\t\t</li>\n\t\t\t\t</div>\n\t\t\t</div>\n\t\t</div>\n\t</div>\n</div>\n<div>\n\t\t<div class=\"card col-12\">\n\t\t\t\t<br/>\n\t\t\t\t<header><h5>女生小说</h5></header>\n\t\t\t\t<div class=\"row\">\n\t\t\t\t\t\t<div *ngFor=\"let female of females\" class=\"col-md-3 col-sm-4 col-xs-12 card\">\n\t\t\t\t\t\t\t\t<br/>\n\t\t\t\t\t\t\t\t<header>\n\t\t\t\t\t\t\t\t\t<img src=\"{{female.icon}}\" width=\"30\" height=\"30\"/>\n\t\t\t\t\t\t\t\t\t<a>{{female.title}}</a>\n\t\t\t\t\t\t\t\t\t<span class=\"pull-right\">更多...</span>\n\t\t\t\t\t\t\t\t</header>\n\t\t\t\t\t\t\t\t<br/>\n\t\t\t\t\t\t\t\t<div class=\"list-group\" style=\"font-size:14\">\n\t\t\t\t\t\t\t\t\t<li *ngFor=\"let book of female.books; let i = index;\" class=\"list-group-item\">\n\t\t\t\t\t\t\t\t\t\t\t<a (click)=\"viewThisPicture(book._id)\">{{i + 1}}.  {{book.title}}</a>\n\t\t\t\t\t\t\t\t\t\t\t<a (click)=\"viewThisPicture(book._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n\t\t\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t\t</div>\n\t\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t</div>\n</div>\n"
 
 /***/ }),
 
@@ -357,6 +376,8 @@ module.exports = module.exports.toString();
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return BookRankComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_book_service__ = __webpack_require__("../../../../../src/app/service/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -367,20 +388,68 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 
+
+
 var BookRankComponent = (function () {
-    function BookRankComponent() {
+    function BookRankComponent(bookService) {
+        this.bookService = bookService;
+        this.females = [];
+        this.males = [];
     }
     BookRankComponent.prototype.ngOnInit = function () {
+        this.getAllRanks();
+    };
+    BookRankComponent.prototype.getAllRanks = function () {
+        var _this = this;
+        this.bookService.getAllRanks().subscribe(function (res) {
+            console.log(res);
+            if (res != null && res.ok) {
+                var _loop_1 = function (male) {
+                    _this.bookService.getRankBooks(male._id).subscribe(function (books) {
+                        if (books != null && books.ok) {
+                            _this.males.push({
+                                title: male.title,
+                                books: books.ranking.books.slice(0, 20),
+                                rankId: male._id,
+                                icon: __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].IMGAPI + __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].static + male.cover
+                            });
+                        }
+                    });
+                };
+                for (var _i = 0, _a = res.male; _i < _a.length; _i++) {
+                    var male = _a[_i];
+                    _loop_1(male);
+                }
+                var _loop_2 = function (female) {
+                    _this.bookService.getRankBooks(female._id).subscribe(function (books) {
+                        if (books != null && books.ok) {
+                            _this.females.push({
+                                title: female.title,
+                                books: books.ranking.books.slice(0, 20),
+                                rankId: female._id,
+                                icon: __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].IMGAPI + __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].static + female.cover
+                            });
+                        }
+                    });
+                };
+                for (var _b = 0, _c = res.female; _b < _c.length; _b++) {
+                    var female = _c[_b];
+                    _loop_2(female);
+                }
+            }
+        });
     };
     BookRankComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-rank',
             template: __webpack_require__("../../../../../src/app/books/rank/rank.component.html"),
-            styles: [__webpack_require__("../../../../../src/app/books/rank/rank.component.scss")]
+            styles: [__webpack_require__("../../../../../src/app/books/rank/rank.component.scss")],
+            providers: [__WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]) === "function" && _a || Object])
     ], BookRankComponent);
     return BookRankComponent;
+    var _a;
 }());
 
 //# sourceMappingURL=rank.component.js.map
@@ -393,8 +462,8 @@ var BookRankComponent = (function () {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return AppConfig; });
 var AppConfig = {
-    API: 'http://39.108.63.38:3000/api/getboook/byurl',
-    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl',
+    API: 'http://39.108.63.38:3000/api/getboook/byurl?url=',
+    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl?url=',
     static: 'http://statics.zhuishushenqi.com',
     category: {
         // 带书籍数量的父分类
@@ -471,7 +540,7 @@ var AppConfig = {
 /***/ "../../../../../src/app/dashboard/dashboard.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>小说排行榜100名</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n        <a href=\"#\"  *ngFor=\"let book of hotThreeBook; let i = index;\" class=\"list-group-item\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-xs-4\">\n                <img src=\"{{imgApi}}?url={{staticImg}}{{book.cover}}\" height=\"100\" width=\"80\"/>\n            </div>\n            <div class=\"col-md-6 col-xs-8\">\n                <h4>\n                    <span>{{book.title}}</span>\n                </h4>\n                <p>\n                    <a>{{book.author}}</a> \n                </p>\n            </div>\n          </div>\n        </a>\n        <li *ngFor=\"let book of books; let i = index;\" class=\"list-group-item\">\n            <a (click)=\"viewThisPicture(picture._id)\">{{i + 4}}.  {{book.title}}</a>\n            <a (click)=\"viewThisPicture(picture._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n        </li>\n      </div>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n  </div>\n</div>\n"
+module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n    <div style=\"width:100%; height:100%\">\n        <carousel>\n            <slide>\n              <img src=\"http://h.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe091caf320761600c338744ad34.jpg\" alt=\"First slide\" style=\"display: block; width: 100%;\">\n            </slide>\n            <slide>\n              <img src=\"http://h.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe091caf320761600c338744ad34.jpg\" alt=\"Second slide\" style=\"display: block; width: 100%;\">\n            </slide>\n            <slide>\n              <img src=\"http://h.hiphotos.baidu.com/image/pic/item/7acb0a46f21fbe091caf320761600c338744ad34.jpg\" alt=\"Third slide\" style=\"display: block; width: 100%;\">\n            </slide>\n        </carousel>\n    </div>\n    <br/>\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>小说排行榜100名</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n        <a href=\"#\"  *ngFor=\"let book of hotThreeBook; let i = index;\" class=\"list-group-item\">\n          <div class=\"row\">\n            <div class=\"col-md-6 col-xs-4\">\n                <img src=\"{{imgApi}}{{staticImg}}{{book.cover}}\" height=\"100\" width=\"80\"/>\n            </div>\n            <div class=\"col-md-6 col-xs-8\">\n                <h4>\n                    <span>{{book.title}}</span>\n                </h4>\n                <p>\n                    <a>{{book.author}}</a> \n                </p>\n            </div>\n          </div>\n        </a>\n        <li *ngFor=\"let book of books; let i = index;\" class=\"list-group-item\">\n            <a (click)=\"viewThisPicture(book._id)\">{{i + 4}}.  {{book.title}}</a>\n            <a (click)=\"viewThisPicture(book._id)\"><span class=\"pull-right\">{{book.author}}</span></a>\n        </li>\n      </div>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      <br/>\n      <header>\n        <h5>美图推荐</h5>\n      </header>\n      <br/>\n      <div class=\"list-group\">\n          <li *ngFor=\"let image of images; let i = index;\" class=\"list-group-item\">\n              <a (click)=\"viewTheImage(image._id)\">{{image.title}}</a>\n          </li>\n        </div>\n      <br/>\n    </div>\n    <div class=\"col-md-4 col-xs-12 card\">\n      holle\n    </div>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -481,8 +550,10 @@ module.exports = "<div class=\"animated fadeIn\">\n  <div class=\"main row\">\n 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return DashboardComponent; });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__service_book_service__ = __webpack_require__("../../../../../src/app/service/book.service.ts");
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../../_@angular_router@4.3.4@@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_book_service__ = __webpack_require__("../../../../../src/app/service/book.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__service_image_service__ = __webpack_require__("../../../../../src/app/service/image.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -495,47 +566,245 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 
 
 
+
+
 var DashboardComponent = (function () {
-    function DashboardComponent(bookService) {
+    function DashboardComponent(bookService, imageService, router) {
         this.bookService = bookService;
+        this.imageService = imageService;
+        this.router = router;
         this.hotThreeBook = [];
         this.books = [];
-        this.imgApi = __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].IMGAPI;
-        this.staticImg = __WEBPACK_IMPORTED_MODULE_2__config_apiConfig__["a" /* AppConfig */].static;
+        this.images = [];
+        this.imgApi = __WEBPACK_IMPORTED_MODULE_4__config_apiConfig__["a" /* AppConfig */].IMGAPI;
+        this.staticImg = __WEBPACK_IMPORTED_MODULE_4__config_apiConfig__["a" /* AppConfig */].static;
     }
     DashboardComponent.prototype.ngOnInit = function () {
         this.getRankBooks();
+        this.getHotImages();
     };
     DashboardComponent.prototype.getRankBooks = function () {
         var _this = this;
-        this.bookService.getRankBooks().subscribe(function (res) {
-            console.log(res);
+        this.bookService.getRankBooks('54d42d92321052167dfb75e3').subscribe(function (res) {
+            // console.log(res);
             if (res != null && res.ok) {
                 _this.hotThreeBook = res.ranking.books.slice(0, 3);
-                _this.books = res.ranking.books.slice(3, 101);
+                _this.books = res.ranking.books.slice(3, 100);
             }
         });
+    };
+    DashboardComponent.prototype.getHotImages = function () {
+        var _this = this;
+        this.imageService.getHotImages().subscribe(function (res) {
+            // console.log(res);
+            if (res != null) {
+                _this.images = res;
+            }
+        });
+    };
+    DashboardComponent.prototype.viewTheImage = function (id) {
+        this.router.navigate(['/images/image-view', { id: id }]);
     };
     DashboardComponent = __decorate([
         Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
             selector: 'app-home',
             template: __webpack_require__("../../../../../src/app/dashboard/dashboard.component.html"),
-            providers: [__WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]]
+            providers: [__WEBPACK_IMPORTED_MODULE_2__service_book_service__["a" /* BookService */], __WEBPACK_IMPORTED_MODULE_3__service_image_service__["a" /* ImageService */]]
         }),
-        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__service_book_service__["a" /* BookService */]) === "function" && _a || Object])
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_book_service__["a" /* BookService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_book_service__["a" /* BookService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_3__service_image_service__["a" /* ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_3__service_image_service__["a" /* ImageService */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
     ], DashboardComponent);
     return DashboardComponent;
-    var _a;
+    var _a, _b, _c;
 }());
 
 //# sourceMappingURL=dashboard.component.js.map
 
 /***/ }),
 
+/***/ "../../../../../src/app/images/image-type/image-type.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "<div class=\"card\">\n  <header>\n    分类\n  </header>\n  <div>\n      <span class=\"badge badge-primary badge-pill\">清纯</span>\n      <span class=\"badge badge-primary badge-pill\">性感</span>\n      <span class=\"badge badge-primary badge-pill\">汹涌</span>\n      <span class=\"badge badge-primary badge-pill\">蜜桃</span>\n      <span class=\"badge badge-primary badge-pill\">诱惑</span>\n      <span class=\"badge badge-primary badge-pill\">莜崎爱</span>\n  </div>\n  <div class=\"list-group\">\n      <li *ngFor=\"let image of images; let i = index;\" class=\"list-group-item\">\n          <a (click)=\"viewTheImage(image._id)\">{{image.title}}</a>\n      </li>\n  </div>\n  <div class=\"row\">\n      <div class=\"col-md-2 col-xs-3\">\n          <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"goToLastPage();false\">上一页</button>\n      </div>\n      <div class=\"col-md-4 col-xs-6\"></div>\n      <div class=\"col-md-2 col-xs-3\">\n          <button type=\"button\" class=\"btn btn-outline-primary\" (click)=\"goToNextPage();false\">下一页</button>\n      </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/images/image-type/image-type.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../_css-loader@0.28.7@css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/images/image-type/image-type.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageTypeComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../../_@angular_router@4.3.4@@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_image_service__ = __webpack_require__("../../../../../src/app/service/image.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ImageTypeComponent = (function () {
+    function ImageTypeComponent(imageService, route, router) {
+        this.imageService = imageService;
+        this.route = route;
+        this.router = router;
+        this.ImageUrl = __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].IMGAPI;
+        this.images = [];
+        this.tags = [];
+        this.title = '';
+    }
+    ImageTypeComponent.prototype.ngOnInit = function () {
+        var type = this.route.params['value']['type'];
+        this.getPicturesByType(type);
+    };
+    ImageTypeComponent.prototype.getPicturesByType = function (type) {
+        var _this = this;
+        var tags = '';
+        if (type == 'qingchun') {
+            tags = '校花,青春,清纯,清新';
+        }
+        this.imageService.getImagesByTagOr(tags).subscribe(function (res) {
+            console.log(res);
+            if (res != null) {
+                _this.images = res;
+            }
+        });
+    };
+    ImageTypeComponent.prototype.viewTheImage = function (id) {
+        this.router.navigate(['/images/image-view', { id: id }]);
+    };
+    ImageTypeComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-image-type',
+            template: __webpack_require__("../../../../../src/app/images/image-type/image-type.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/images/image-type/image-type.component.scss")],
+            providers: [__WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */]]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object, typeof (_c = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["c" /* Router */]) === "function" && _c || Object])
+    ], ImageTypeComponent);
+    return ImageTypeComponent;
+    var _a, _b, _c;
+}());
+
+//# sourceMappingURL=image-type.component.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/images/image-view/image-view.component.html":
+/***/ (function(module, exports) {
+
+module.exports = "\n<div class=\"card row\">\n    <br/>\n    <header>\n      <h5>{{title}}</h5>\n    </header>\n    <br/>\n    <div class=\"list-group\">\n        <li *ngFor=\"let image of images; let i = index;\" class=\"list-group-item\" style=\"text-align:center\">\n            <img src=\"{{ImageUrl}}{{image}}\" max-width=\"800\" width=\"100%\"/>\n        </li>\n    </div>\n</div>\n\n"
+
+/***/ }),
+
+/***/ "../../../../../src/app/images/image-view/image-view.component.scss":
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__("../../../../_css-loader@0.28.7@css-loader/lib/css-base.js")(false);
+// imports
+
+
+// module
+exports.push([module.i, "", ""]);
+
+// exports
+
+
+/*** EXPORTS FROM exports-loader ***/
+module.exports = module.exports.toString();
+
+/***/ }),
+
+/***/ "../../../../../src/app/images/image-view/image-view.component.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageViewComponent; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_router__ = __webpack_require__("../../../../_@angular_router@4.3.4@@angular/router/@angular/router.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__service_image_service__ = __webpack_require__("../../../../../src/app/service/image.service.ts");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ImageViewComponent = (function () {
+    function ImageViewComponent(imageService, route) {
+        this.imageService = imageService;
+        this.route = route;
+        this.ImageUrl = __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].IMGAPI;
+        this.images = [];
+        this.tags = [];
+        this.title = '';
+    }
+    ImageViewComponent.prototype.ngOnInit = function () {
+        var id = this.route.params['value']['id'];
+        this.getPictures(id);
+    };
+    ImageViewComponent.prototype.getPictures = function (id) {
+        var _this = this;
+        this.imageService.getImageView(id).subscribe(function (res) {
+            // console.log(res);
+            _this.title = res[0].title;
+            _this.tags = res[0].tags;
+            _this.images = res[0].image_url;
+        });
+    };
+    ImageViewComponent = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Component"])({
+            selector: 'app-image-view',
+            template: __webpack_require__("../../../../../src/app/images/image-view/image-view.component.html"),
+            styles: [__webpack_require__("../../../../../src/app/images/image-view/image-view.component.scss")],
+            providers: [__WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */]]
+        }),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_2__service_image_service__["a" /* ImageService */]) === "function" && _a || Object, typeof (_b = typeof __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_router__["a" /* ActivatedRoute */]) === "function" && _b || Object])
+    ], ImageViewComponent);
+    return ImageViewComponent;
+    var _a, _b;
+}());
+
+//# sourceMappingURL=image-view.component.js.map
+
+/***/ }),
+
 /***/ "../../../../../src/app/layouts/full-layout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<header class=\"app-header navbar\">\n  <button class=\"navbar-toggler d-lg-none\" type=\"button\" appMobileSidebarToggler>&#9776;</button>\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <ul class=\"nav navbar-nav mr-auto d-md-down-none\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link navbar-toggler\" href=\"#\" appSidebarToggler>&#9776;</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"app-body\">\n  <div class=\"sidebar\">\n    <nav class=\"sidebar-nav\">\n      <ul class=\"nav\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/home']\"><i class=\"icon-home\"></i> 主页 <span class=\"badge badge-info\">NEW</span></a>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-book-open\"></i>小说</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/hot']\"><i class=\"icon-book-open\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/rank']\"><i class=\"icon-book-open\"></i>排行榜</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/history']\"><i class=\"icon-book-open\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-picture\"></i>图片</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/buttons']\"><i class=\"icon-picture\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/social-buttons']\"><i class=\"icon-picture\"></i>分类</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/cards']\"><i class=\"icon-picture\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-note\"></i>博客</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/buttons']\"><i class=\"icon-note\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/social-buttons']\"><i class=\"icon-note\"></i>排行榜</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/cards']\"><i class=\"icon-note\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </nav>\n  </div>\n\n  <!-- Main content -->\n  <main class=\"main\">\n\n    <!-- Breadcrumb -->\n    <ol class=\"breadcrumb\">\n      <app-breadcrumbs></app-breadcrumbs>\n    </ol>\n\n    <div class=\"container-fluid\">\n      <router-outlet></router-outlet>\n    </div><!-- /.conainer-fluid -->\n  </main>\n</div>\n\n<footer class=\"app-footer\">\n  <a href=\"http://39.108.63.38\">Aferica</a> &copy; 2017 creativeLabs.\n  <span class=\"float-right\">Powered by <a href=\"http://39.108.63.38\">Aferica</a></span>\n</footer>\n"
+module.exports = "<header class=\"app-header navbar\">\n  <button class=\"navbar-toggler d-lg-none\" type=\"button\" appMobileSidebarToggler>&#9776;</button>\n  <a class=\"navbar-brand\" href=\"#\"></a>\n  <ul class=\"nav navbar-nav mr-auto d-md-down-none\">\n    <li class=\"nav-item\">\n      <a class=\"nav-link navbar-toggler\" href=\"#\" appSidebarToggler>&#9776;</a>\n    </li>\n  </ul>\n</header>\n\n<div class=\"app-body\">\n  <div class=\"sidebar\">\n    <nav class=\"sidebar-nav\">\n      <ul class=\"nav\">\n        <li class=\"nav-item\">\n          <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/home']\"><i class=\"icon-home\"></i> 主页 <span class=\"badge badge-info\">NEW</span></a>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-book-open\"></i>小说</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/hot']\"><i class=\"icon-book-open\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/rank']\"><i class=\"icon-book-open\"></i>排行榜</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/books/history']\"><i class=\"icon-book-open\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-picture\"></i>图片</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/buttons']\"><i class=\"icon-picture\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/images/image-type']\"><i class=\"icon-picture\"></i>分类</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/cards']\"><i class=\"icon-picture\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n        <li class=\"nav-item nav-dropdown\" routerLinkActive=\"open\" appNavDropdown>\n          <a class=\"nav-link nav-dropdown-toggle\" href=\"#\" appNavDropdownToggle><i class=\"icon-note\"></i>博客</a>\n          <ul class=\"nav-dropdown-items\">\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/buttons']\"><i class=\"icon-note\"></i>推荐</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/social-buttons']\"><i class=\"icon-note\"></i>排行榜</a>\n            </li>\n            <li class=\"nav-item\">\n              <a class=\"nav-link\" routerLinkActive=\"active\" [routerLink]=\"['/components/cards']\"><i class=\"icon-note\"></i>记录</a>\n            </li>\n          </ul>\n        </li>\n      </ul>\n    </nav>\n  </div>\n\n  <!-- Main content -->\n  <main class=\"main\">\n\n    <!-- Breadcrumb -->\n    <ol class=\"breadcrumb\">\n      <app-breadcrumbs></app-breadcrumbs>\n    </ol>\n\n    <div class=\"container-fluid\">\n      <router-outlet></router-outlet>\n    </div><!-- /.conainer-fluid -->\n  </main>\n</div>\n\n<footer class=\"app-footer\">\n  <a href=\"http://39.108.63.38\">Aferica</a> &copy; 2017 creativeLabs.\n  <span class=\"float-right\">Powered by <a href=\"http://39.108.63.38\">Aferica</a></span>\n</footer>\n"
 
 /***/ }),
 
@@ -612,9 +881,14 @@ var BookService = (function () {
         });
         this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
     }
-    BookService.prototype.getRankBooks = function () {
+    BookService.prototype.getRankBooks = function (id) {
         var params = new URLSearchParams;
-        return this.http.get(this.API + '?url=' + __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].rank.rankInfo + "/54d42d92321052167dfb75e3")
+        return this.http.get(this.API + __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].rank.rankInfo + "/" + id)
+            .map(function (res) { return res.json(); });
+    };
+    BookService.prototype.getAllRanks = function () {
+        var params = new URLSearchParams;
+        return this.http.get(this.API + __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].rank.rankCategory)
             .map(function (res) { return res.json(); });
     };
     BookService = __decorate([
@@ -626,6 +900,62 @@ var BookService = (function () {
 }());
 
 //# sourceMappingURL=book.service.js.map
+
+/***/ }),
+
+/***/ "../../../../../src/app/service/image.service.ts":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return ImageService; });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__angular_core__ = __webpack_require__("../../../../_@angular_core@4.3.4@@angular/core/@angular/core.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__angular_http__ = __webpack_require__("../../../../_@angular_http@4.3.4@@angular/http/@angular/http.es5.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__ = __webpack_require__("../../../../_rxjs@5.4.3@rxjs/add/operator/map.js");
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_rxjs_add_operator_map__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__ = __webpack_require__("../../../../../src/app/config/apiConfig.ts");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+
+var ImageService = (function () {
+    function ImageService(http) {
+        this.http = http;
+        this.API = __WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].API;
+        this.headers = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["a" /* Headers */]({
+            'Content-Type': 'application/json',
+            'charset': 'UTF-8'
+        });
+        this.options = new __WEBPACK_IMPORTED_MODULE_1__angular_http__["d" /* RequestOptions */]({ headers: this.headers });
+    }
+    ImageService.prototype.getHotImages = function () {
+        var params = new URLSearchParams;
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].photo.getPictureByTagsOr + '?tags=性感,推女神&limit=100')
+            .map(function (res) { return res.json(); });
+    };
+    ImageService.prototype.getImageView = function (id) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].photo.getPictureById + '?_id=' + id).map(function (res) { return res.json(); });
+    };
+    ImageService.prototype.getImagesByTagOr = function (tag) {
+        return this.http.get(__WEBPACK_IMPORTED_MODULE_3__config_apiConfig__["a" /* AppConfig */].photo.getPictureByTagsOr + '?tags=' + tag).map(function (res) { return res.json(); });
+    };
+    ImageService = __decorate([
+        Object(__WEBPACK_IMPORTED_MODULE_0__angular_core__["Injectable"])(),
+        __metadata("design:paramtypes", [typeof (_a = typeof __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */] !== "undefined" && __WEBPACK_IMPORTED_MODULE_1__angular_http__["b" /* Http */]) === "function" && _a || Object])
+    ], ImageService);
+    return ImageService;
+    var _a;
+}());
+
+//# sourceMappingURL=image.service.js.map
 
 /***/ }),
 

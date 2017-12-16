@@ -1,0 +1,14 @@
+
+<div class="card row">
+    <br/>
+    <header>
+      <h5>{{title}}</h5>
+    </header>
+    <br/>
+    <div class="list-group">
+        <li *ngFor="let image of images; let i = index;" class="list-group-item" style="text-align:center">
+            <img src="{{ImageUrl}}{{image}}" max-width="800" width="100%"/>
+        </li>
+    </div>
+</div>
+

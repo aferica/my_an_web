@@ -1,0 +1,27 @@
+<div class="card">
+  <header>
+    分类
+  </header>
+  <div>
+      <span class="badge badge-primary badge-pill">清纯</span>
+      <span class="badge badge-primary badge-pill">性感</span>
+      <span class="badge badge-primary badge-pill">汹涌</span>
+      <span class="badge badge-primary badge-pill">蜜桃</span>
+      <span class="badge badge-primary badge-pill">诱惑</span>
+      <span class="badge badge-primary badge-pill">莜崎爱</span>
+  </div>
+  <div class="list-group">
+      <li *ngFor="let image of images; let i = index;" class="list-group-item">
+          <a (click)="viewTheImage(image._id)">{{image.title}}</a>
+      </li>
+  </div>
+  <div class="row">
+      <div class="col-md-2 col-xs-3">
+          <button type="button" class="btn btn-outline-primary" (click)="goToLastPage();false">上一页</button>
+      </div>
+      <div class="col-md-4 col-xs-6"></div>
+      <div class="col-md-2 col-xs-3">
+          <button type="button" class="btn btn-outline-primary" (click)="goToNextPage();false">下一页</button>
+      </div>
+  </div>
+</div>
