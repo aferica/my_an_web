@@ -6,7 +6,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { NAV_DROPDOWN_DIRECTIVES } from './shared/nav-dropdown.directive';
 
-import { ChartsModule } from 'ng2-charts/ng2-charts';
+// import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { SIDEBAR_TOGGLE_DIRECTIVES } from './shared/sidebar.directive';
 import { AsideToggleDirective } from './shared/aside.directive';
 import { BreadcrumbsComponent } from './shared/breadcrumb.component';
@@ -37,7 +37,7 @@ import { ImageTypeComponent } from './images/image-type/image-type.component';
     CarouselModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
-    ChartsModule,
+    // ChartsModule,
     HttpModule
   ],
   declarations: [
