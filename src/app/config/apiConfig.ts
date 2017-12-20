@@ -71,7 +71,8 @@ export const AppConfig = {
     photo: {
         getPictureByTagsOr: 'http://39.108.63.38:3000/api/picture/getPictureByTagsOr',
         getPictureByTagsAnd: 'http://39.108.63.38:3000/api/picture/getPictureByTagsAnd',
-        getPictureById: 'http://39.108.63.38:3000/api/picture/getPicture'
+        getPictureById: 'http://39.108.63.38:3000/api/picture/getPicture',
+        getPictureNumber: 'http://39.108.63.38:3000/api/picture/getPictureNumber'
     }
 
 }

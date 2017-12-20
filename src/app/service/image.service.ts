@@ -29,8 +29,12 @@ export class ImageService {
     return this.http.get(AppConfig.photo.getPictureById + '?_id=' + id).map(res => res.json());
   }
 
-  getImagesByTagOr(tag): Observable<any> {
-    return this.http.get(AppConfig.photo.getPictureByTagsOr + '?tags=' + tag).map(res => res.json());
+  getImagesByTagOr(tag,page): Observable<any> {
+    return this.http.get(AppConfig.photo.getPictureByTagsOr + '?tags=' + tag + '&page=' + page).map(res => res.json());
+  }
+
+  getImageNumber(tag): Observable<any> {
+    return this.http.get(AppConfig.photo.getPictureNumber + '?tags=' + tag).map(res => res.json());
   }
 
 }

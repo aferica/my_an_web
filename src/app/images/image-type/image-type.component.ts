@@ -14,7 +14,8 @@ export class ImageTypeComponent implements OnInit {
 
   ImageUrl = AppConfig.IMGAPI;
   images = [];
-  tags = [];
+  tags = '';
+  page = '1';
   title = '';
   
   constructor(
@@ -25,15 +26,15 @@ export class ImageTypeComponent implements OnInit {
 
   ngOnInit() {
     let type = this.route.params['value']['type'];
-    this.getPicturesByType(type);
+    if(type == 'qingchun') {
+      this.tags = '校花,青春,清纯,清新';
+    }
+    let page = this.route.params['value']['page'];
+    this.getImages(type);
   }
 
-  getPicturesByType(type) {
-    let tags = '';
-    if(type == 'qingchun') {
-      tags = '校花,青春,清纯,清新';
-    }
-    this.imageService.getImagesByTagOr(tags).subscribe (res=> {
+  getImages(page) {  
+    this.imageService.getImagesByTagOr(this.tags,page).subscribe (res=> {
       console.log(res);
       if(res != null) {
         this.images = res;
@@ -43,5 +44,21 @@ export class ImageTypeComponent implements OnInit {
 
   viewTheImage(id){
     this.router.navigate(['/images/image-view', {id: id}]);
+  }
+
+  goToLastPage(){
+    let temp = 1;
+    if (this.page!='1')
+      temp = parseInt(this.page) - 1
+    //this.router.navigate(['/image/xinggan/' + temp]);
+    this.page = temp.toString();
+    this.getImages(temp);
+  }
+
+  goToNextPage(){
+    let temp = parseInt(this.page) + 1
+    //this.router.navigate(['/image/xianggan/' + temp]);
+    this.page = temp.toString();
+    this.getImages(temp);
   }
 }
