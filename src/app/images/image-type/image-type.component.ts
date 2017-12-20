@@ -25,6 +25,7 @@ export class ImageTypeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.tags = this.route.params['value']['tag'];
     let type = this.route.params['value']['type'];
     if(type == 'qingchun') {
       this.tags = '校花,青春,清纯,清新';
@@ -35,7 +36,7 @@ export class ImageTypeComponent implements OnInit {
 
   getImages(page) {  
     this.imageService.getImagesByTagOr(this.tags,page).subscribe (res=> {
-      console.log(res);
+      // console.log(res);
       if(res != null) {
         this.images = res;
       }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import { ImageService } from '../../service/image.service';
 import { AppConfig } from '../../config/apiConfig';
@@ -19,7 +19,8 @@ export class ImageViewComponent implements OnInit {
   
   constructor(
     private imageService: ImageService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -34,5 +35,9 @@ export class ImageViewComponent implements OnInit {
       this.tags = res[0].tags;
       this.images = res[0].image_url;
     });
+  }
+
+  findByTag(tag) {
+    this.router.navigate(['/images/image-type', {tag: tag}]);
   }
 }

@@ -4,6 +4,12 @@
     <header>
       <h5>{{title}}</h5>
     </header>
+    <div>
+        <a *ngFor="let tag of tags">
+            <a  href="#" (click)="findByTag(tag);false" 
+            *ngIf="tag!=''" class="badge badge-primary badge-pill" style="color:white">{{tag}}</a>
+        </a>
+    </div>
     <div class="list-group">
         <li *ngFor="let image of images; let i = index;" class="list-group-item" style="text-align:center">
             <img src="{{ImageUrl}}{{image}}"/>
