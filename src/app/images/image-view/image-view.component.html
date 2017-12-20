@@ -10,10 +10,21 @@
             *ngIf="tag!=''" class="badge badge-primary badge-pill" style="color:white">{{tag}}</a>
         </a>
     </div>
-    <div class="list-group">
-        <li *ngFor="let image of images; let i = index;" class="list-group-item" style="text-align:center">
-            <img src="{{ImageUrl}}{{image}}"/>
-        </li>
+    <div class="row">
+        <div class="col-md-3 col-0">
+            
+        </div>
+        <div class="col-md-6 col-12">
+            <div class="list-group">
+                <li *ngFor="let image of images; let i = index;" class="list-group-item" style="text-align:center">
+                    <img src="{{ImageUrl}}{{image}}"/>
+                </li>
+            </div>
+        </div>
+        <div class="col-md-3 col-0">
+            
+        </div>
     </div>
+    
 </div>
 

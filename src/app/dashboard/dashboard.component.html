@@ -23,13 +23,13 @@
       <div class="list-group">
         <a href="#"  *ngFor="let book of hotThreeBook; let i = index;" class="list-group-item">
           <div class="row">
-            <div class="col-md-6 col-xs-4">
-                <img src="{{imgApi}}{{staticImg}}{{book.cover}}" height="100" width="80"/>
+            <div class="col-md-4 col-4">
+                <img src="{{imgApi}}{{staticImg}}{{book.cover}}" width="72"/>
             </div>
-            <div class="col-md-6 col-xs-8">
+            <div class="col-md-8 col-8">
                 <h4>
                     <span>{{book.title}}</span>
-                </h4>
+                </h4><br/>
                 <p>
                     <a>{{book.author}}</a> 
                 </p>
