@@ -51,5 +51,9 @@ export class DashboardComponent {
   viewTheImage(id){
     this.router.navigate(['/images/image-view', {id: id}]);
   }
+
+  viewBookInfo(id) {
+    this.router.navigate(['/books/book-info', {id: id}]);
+  }
   
 }

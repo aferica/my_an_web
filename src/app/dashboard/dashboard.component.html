@@ -14,7 +14,7 @@
         </carousel>
     </div> -->
     <br/>
-    <div class="col-md-4 col-xs-12 card">
+    <div class="col-md-4 col-xs-12  col-12 card">
       <br/>
       <header>
         <h5>小说排行榜100名</h5>
@@ -37,12 +37,12 @@
           </div>
         </a>
         <li *ngFor="let book of books; let i = index;" class="list-group-item">
-            <a (click)="viewThisPicture(book._id)">{{i + 4}}.  {{book.title}}</a>
-            <a (click)="viewThisPicture(book._id)"><span class="pull-right">{{book.author}}</span></a>
+            <a (click)="viewBookInfo(book._id)">{{i + 4}}.  {{book.title}}</a>
+            <a (click)="viewAuthorInfo(book._id)"><span class="pull-right">{{book.author}}</span></a>
         </li>
       </div>
     </div>
-    <div class="col-md-4 col-xs-12 card">
+    <div class="col-md-4 col-xs-12  col-12 card">
       <br/>
       <header>
         <h5>美图推荐</h5>
@@ -55,7 +55,7 @@
         </div>
       <br/>
     </div>
-    <div class="col-md-4 col-xs-12 card">
+    <div class="col-md-4 col-xs-12 col-12 card">
       holle
     </div>
   </div>

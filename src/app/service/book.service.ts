@@ -32,4 +32,11 @@ export class BookService {
       .map(res => res.json());
   }
 
+  getBookInfo(id): Observable<any> {
+    
+    let params = new URLSearchParams;
+    return this.http.get(this.API  + AppConfig.book.bookInfo + '/' + id )
+      .map(res => res.json());
+  }
+
 }

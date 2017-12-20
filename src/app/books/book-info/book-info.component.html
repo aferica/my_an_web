@@ -1,0 +1,39 @@
+
+<div class="col-12" id="header">
+  <img src="../../../assets/img/xianxia.jpg" width="100%"/>
+</div>
+<div class="row" *ngIf="bookInfo!=null">
+    <div class="col-md-2 col-0">
+        
+    </div>
+    <div class="col-md-8 col-12 card">
+        <div class="row">
+            <div class="col-md-2 col-5">
+              <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}" width="144"/>
+            </div>
+            <div class="col-md-8 col-7">
+              <br/>
+              <h5><b>{{bookInfo.title}}</b></h5>
+              <div>
+                <a>{{bookInfo.author}}   著</a><br/>
+              </div>
+              <div>
+                <a *ngFor="let tag of bookInfo.tags">
+                    <a  href="#" (click)="false" 
+                    *ngIf="tag!=''" class="badge badge-success badge-pill" style="color:white">{{tag}}</a>
+                </a>
+              </div>
+              <div>
+                <a>字数：{{bookInfo.wordCount}}</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>追书人数：{{bookInfo.latelyFollower}}</a>
+                &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>好评率：{{bookInfo.retentionRatio}}%</a>
+              </div>
+            </div>
+            <div class="col-md-2 col-0">
+                
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2 col-0">
+        
+    </div>
+</div>

@@ -28,6 +28,8 @@ import { BookHotComponent } from './books/hot/hot.component';
 import { BookHistoryComponent } from './books/history/history.component';
 import { ImageViewComponent } from './images/image-view/image-view.component';
 import { ImageTypeComponent } from './images/image-type/image-type.component';
+import { BookInfoComponent } from './books/book-info/book-info.component';
+import { BookReadComponent } from './books/book-read/book-read.component';
 
 @NgModule({
   imports: [
@@ -52,7 +54,9 @@ import { ImageTypeComponent } from './images/image-type/image-type.component';
     BookHotComponent,
     BookHistoryComponent,
     ImageViewComponent,
-    ImageTypeComponent
+    ImageTypeComponent,
+    BookInfoComponent,
+    BookReadComponent
   ],
   providers: [{
     provide: LocationStrategy,
