@@ -1,15 +1,19 @@
 
-<div class="col-12" id="header">
+<!-- <div class="col-12" id="header">
   <img src="../../../assets/img/xianxia.jpg" width="100%"/>
-</div>
-<div class="row" *ngIf="bookInfo!=null">
+</div> -->
+<div class="card" *ngIf="bookInfo!=null">
+    <header>
+        <img src="../../../assets/img/xianxia.jpg" width="100%"/>
+    </header>
+    <div class="row">
     <div class="col-md-2 col-0">
         
     </div>
-    <div class="col-md-8 col-12 card">
+    <div class="col-md-8 col-12">
         <div class="row">
             <div class="col-md-2 col-4">
-              <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}"/>
+              <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}" width="100%"/>
             </div>
             <div class="col-md-8 col-8">
               <br/>
@@ -27,13 +31,23 @@
                 <a>字数：{{bookInfo.wordCount}}</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>追书人数：{{bookInfo.latelyFollower}}</a>
                 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>好评率：{{bookInfo.retentionRatio}}%</a>
               </div>
+              <div>
+                <button type="button" class="btn btn-danger">开始阅读</button>
+                <button type="button" class="btn btn-primary">加入书架</button>
+                <button type="button" class="btn btn-info">投票支持</button>
+              </div>
             </div>
-            <div class="col-md-2 col-0">
-                
+            <div class="col-md-2 col-4">
+                <a>我要打分：</a>
+                <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
+                (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
+                [titles]="['one','two','three']"></rating>
+                <button type="button" class="btn btn-info">提交</button>
             </div>
         </div>
     </div>
     <div class="col-md-2 col-0">
         
     </div>
+  </div>
 </div>

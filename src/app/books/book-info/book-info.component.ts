@@ -15,7 +15,13 @@ export class BookInfoComponent implements OnInit {
   bookInfo = null;
   imgApi = AppConfig.IMGAPI;
   staticImg = AppConfig.static;
-
+  max = 5;
+  rate = 7;
+  isReadonly = false;
+ 
+  overStar: number;
+  percent: number;
+ 
   constructor(
     private bookService: BookService,
     private route: ActivatedRoute,
@@ -34,5 +40,14 @@ export class BookInfoComponent implements OnInit {
         this.bookInfo = res;
       }
     });
+  }
+
+  hoveringOver(value: number): void {
+    this.overStar = value;
+    this.percent = (value / this.max) * 100;
+  }
+ 
+  resetStar(): void {
+    this.overStar = void 0;
   }
 }

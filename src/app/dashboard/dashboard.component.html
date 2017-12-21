@@ -17,10 +17,10 @@
     <div class="col-md-4 col-xs-12  col-12 card">
       <br/>
       <header>
-        <h5>小说排行榜100名</h5>
+        <h5>小说排行榜100名<i class="icon-list pull-right" (click)="changeCollapse('book');false"></i></h5>
       </header>
       <br/>
-      <div class="list-group">
+      <div class="list-group" [collapse]="bookIsCollapsed">
         <a href="#"  *ngFor="let book of hotThreeBook; let i = index;" class="list-group-item">
           <div class="row">
             <div class="col-md-4 col-4">
@@ -45,10 +45,10 @@
     <div class="col-md-4 col-xs-12  col-12 card">
       <br/>
       <header>
-        <h5>美图推荐</h5>
+        <h5>美图推荐<i class="icon-list pull-right" (click)="changeCollapse('image');false"></i></h5>
       </header>
       <br/>
-      <div class="list-group">
+      <div class="list-group"  [collapse]="imageIsCollapsed">
           <li *ngFor="let image of images; let i = index;" class="list-group-item">
               <a (click)="viewTheImage(image._id)">{{image.title}}</a>
           </li>

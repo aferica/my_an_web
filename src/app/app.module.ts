@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { HttpModule } from '@angular/http';
 
@@ -16,6 +17,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { RatingModule } from 'ngx-bootstrap/rating';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 // Routing Module
 import { AppRoutingModule } from './app.routing';
@@ -35,10 +38,13 @@ import { BookReadComponent } from './books/book-read/book-read.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     BsDropdownModule.forRoot(),
     CarouselModule.forRoot(),
     TabsModule.forRoot(),
     TooltipModule.forRoot(),
+    RatingModule.forRoot(),
+    CollapseModule.forRoot(),
     // ChartsModule,
     HttpModule
   ],

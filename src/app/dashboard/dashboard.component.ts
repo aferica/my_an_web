@@ -12,6 +12,9 @@ import { AppConfig } from '../config/apiConfig';
 })
 export class DashboardComponent {
 
+  bookIsCollapsed : boolean = true;
+  imageIsCollapsed : boolean = false;
+
   hotThreeBook = [];
   books = [];
   images = [];
@@ -54,6 +57,15 @@ export class DashboardComponent {
 
   viewBookInfo(id) {
     this.router.navigate(['/books/book-info', {id: id}]);
+  }
+
+  changeCollapse(name) {
+    if(name == 'book') {
+      this.bookIsCollapsed = !this.bookIsCollapsed; 
+    }
+    if(name == 'image') {
+      this.imageIsCollapsed = !this.imageIsCollapsed; 
+    }
   }
   
 }
