@@ -20,6 +20,8 @@ import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
+import { LazyLoadImageModule } from 'ng-lazyload-image';
+
 // Routing Module
 import { AppRoutingModule } from './app.routing';
 
@@ -45,6 +47,7 @@ import { BookReadComponent } from './books/book-read/book-read.component';
     TooltipModule.forRoot(),
     RatingModule.forRoot(),
     CollapseModule.forRoot(),
+    LazyLoadImageModule,
     // ChartsModule,
     HttpModule
   ],

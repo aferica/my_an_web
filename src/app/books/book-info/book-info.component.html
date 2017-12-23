@@ -38,12 +38,16 @@
               </div>
             </div>
             <div class="col-md-2 col-4">
-                <a>我要打分：</a>
+                <br/>
+                <a>我要打分：</a><br/>
                 <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
                 (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
-                [titles]="['one','two','three']"></rating>
+                [titles]="['one','two','three']"></rating><br/>
                 <button type="button" class="btn btn-info">提交</button>
             </div>
+        </div>
+        <div class="row">
+
         </div>
     </div>
     <div class="col-md-2 col-0">

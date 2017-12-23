@@ -33,7 +33,10 @@ export class ImageViewComponent implements OnInit {
       // console.log(res);
       this.title = res[0].title;
       this.tags = res[0].tags;
-      this.images = res[0].image_url;
+      for(let url of res[0].image_url) {
+        url = this.ImageUrl + url;
+        this.images.push(url);
+      }     
     });
   }
 

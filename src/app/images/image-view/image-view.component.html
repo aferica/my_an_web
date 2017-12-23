@@ -16,8 +16,8 @@
         </div>
         <div class="col-md-6 col-12">
             <div class="list-group">
-                <li *ngFor="let image of images; let i = index;" class="list-group-item" style="text-align:center">
-                    <img src="{{ImageUrl}}{{image}}"/>
+                <li *ngFor="let image of images;" class="list-group-item" style="text-align:center">
+                    <img [lazyLoad]="image"/>
                 </li>
             </div>
         </div>
