@@ -7,10 +7,10 @@
         <img src="../../../assets/img/xianxia.jpg" width="100%"/>
     </header>
     <div class="row">
-    <div class="col-md-2 col-0">
+    <div class="col-md-3 col-0">
         
     </div>
-    <div class="col-md-8 col-12">
+    <div class="col-md-6 col-12">
         <div class="row">
             <div class="col-md-2 col-4">
               <br/>
@@ -18,7 +18,7 @@
               <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}" width="100%" style="text-align: center; "/>
              </div>
             </div>
-            <div class="col-md-8 col-8">
+            <div class="col-md-7 col-8">
               <br/>
               <h5><b>{{bookInfo.title}}</b></h5>
               <div>
@@ -31,7 +31,7 @@
                 </a>
               </div>
               <div>
-                <a>字数：{{bookInfo.wordCount}}</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>追书人数：{{bookInfo.latelyFollower}}</a>
+                <a style="line-height:0.15em">字数：{{bookInfo.wordCount}}</a>&nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>追书人数：{{bookInfo.latelyFollower}}</a>
                 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>好评率：{{bookInfo.retentionRatio}}%</a>
               </div>
               <div>
@@ -40,20 +40,118 @@
                 <button type="button" class="btn btn-info">投票支持</button>
               </div>
             </div>
-            <div class="col-md-2 col-4">
+            <div class="col-md-3 col-12" align="right">
                 <br/>
-                <a>我要打分：</a><br/>
-                <rating [(ngModel)]="rate" [max]="max" [readonly]="isReadonly"
-                (onHover)="hoveringOver($event)" (onLeave)="resetStar()"
-                [titles]="['one','two','three']"></rating><br/>
-                <button type="button" class="btn btn-info">提交</button>
+                <h1 style="color:orangered; font-style:italic">{{bookInfo.rating.score}}</h1>
+                <a><b style="color:dodgerblue; font-size:1.5em">{{bookInfo.rating.count}}</b>读者打分</a>
             </div>
         </div>
+        <br/>
+        <br/>
         <div class="row">
-
+          <div class="col-md-8 col-12">
+            <tabset>
+                <tab heading="作品信息" id="tab1">
+                  <div class="list-group">
+                    <div class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-3 col-12">
+                          <h6>最新章节：</h6>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <h6 style="color:blue">{{bookInfo.lastChapter}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-3 col-12">
+                          <h6>更新时间：</h6>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <h6 style="color:blue">{{updateTime}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                      <div class="list-group-item">
+                        <div class="row">
+                          <div class="col-md-3 col-12">
+                            <h6>作品大类：</h6>
+                          </div>
+                          <div class="col-md-9 col-12">
+                              <h6>{{bookInfo.majorCate}}</h6>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="list-group-item">
+                        <div class="row">
+                          <div class="col-md-3 col-12">
+                            <h6>作品小类：</h6>
+                          </div>
+                          <div class="col-md-9 col-12">
+                              <h6>{{bookInfo.minorCate}}</h6>
+                          </div>
+                        </div>
+                      </div>
+                    <div class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-3 col-12">
+                          <h6>作品介绍：</h6>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <h6>{{bookInfo.longIntro}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-3 col-12">
+                          <h6>版权信息：</h6>
+                        </div>
+                        <div class="col-md-9 col-12">
+                            <h6 style="color:red">{{bookInfo.copyright}}</h6>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </tab>
+                <tab heading="章节目录(共{{chaptersCount}}章)">
+                  <div class="list-group" >
+                    <li *ngFor="let chapter of allChapters" class="list-group-item">
+                        <a>{{chapter.title}}</a>
+                    </li>
+                  </div>
+                </tab>
+                <tab heading="书友评论">Static content 2</tab>
+              </tabset>
+          </div>
+          <div class="col-md-4 col-12 card" style="background-color:#eee9e2">
+              <br/>
+              <header>
+                <h6>你可能喜欢...</h6>
+              </header>
+              <div class="list-group">
+                <a href="#"  *ngFor="let book of relatedBooks; let i = index;" class="list-group-item">
+                  <div class="row">
+                    <div class="col-md-4 col-4">
+                        <img src="{{imgApi}}{{staticImg}}{{book.cover}}" width="75"/>
+                    </div>
+                    <div class="col-md-8 col-8">
+                        <h5>
+                            <span>{{book.title}}</span>
+                        </h5>
+                        <p>
+                            <a>{{book.author}}</a> 
+                        </p>
+                    </div>
+                  </div>
+                </a>
+              </div>
+              <br/>
+            </div>
         </div>
     </div>
-    <div class="col-md-2 col-0">
+    <div class="col-md-3 col-0">
         
     </div>
   </div>

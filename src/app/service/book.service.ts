@@ -19,23 +19,28 @@ export class BookService {
   
 
   getRankBooks(id): Observable<any> {
-
-    let params = new URLSearchParams;
     return this.http.get(this.API  + AppConfig.rank.rankInfo + "/" + id)
       .map(res => res.json());
   }
 
   getAllRanks(): Observable<any> {
-    
-    let params = new URLSearchParams;
     return this.http.get(this.API  + AppConfig.rank.rankCategory )
       .map(res => res.json());
   }
 
   getBookInfo(id): Observable<any> {
-    
-    let params = new URLSearchParams;
     return this.http.get(this.API  + AppConfig.book.bookInfo + '/' + id )
+      .map(res => res.json());
+  }
+
+  getRelatedRecommendedBooks(id): Observable<any> {
+    console.log(this.API  + AppConfig.book.relatedRecommendedBooks + '/' + id + '/recommend');
+    return this.http.get(this.API  + AppConfig.book.relatedRecommendedBooks + '/' + id + '/recommend')
+      .map(res => res.json());
+  }
+
+  getBookAllChapters(id): Observable<any> {
+    return this.http.get(this.API  + AppConfig.book.bookChapters + '/' + id )
       .map(res => res.json());
   }
 

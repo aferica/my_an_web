@@ -18,6 +18,11 @@ export class BookInfoComponent implements OnInit {
   max = 5;
   rate = 7;
   isReadonly = false;
+  relatedBooks = null;
+  allChapters = [];
+  chapterRow = 0;
+  chaptersCount = 0;
+  updateTime = '';
  
   overStar: number;
   percent: number;
@@ -31,6 +36,8 @@ export class BookInfoComponent implements OnInit {
   ngOnInit() {
     let id = this.route.params['value']['id'];
     this.getBookInfo(id);
+    this.getRelatedRecommendedBooks(id);
+    this.getBookAllChapters(id);
   }
 
   getBookInfo(id) {
@@ -38,6 +45,27 @@ export class BookInfoComponent implements OnInit {
       console.log(res);
       if(res != null ) {
         this.bookInfo = res;
+        this.chapterRow = Math.ceil( res.chaptersCount / 3 );
+        this.chaptersCount = res.chaptersCount;
+        this.updateTime = (new Date(res.updated)).toLocaleDateString();  console.log(this.updateTime);
+      }
+    });
+  }
+
+  getRelatedRecommendedBooks(id) {
+    this.bookService.getRelatedRecommendedBooks(id).subscribe(res => {
+      console.log(res);
+      if(res != null ) {
+        this.relatedBooks = res.books;
+      }
+    });
+  }
+
+  getBookAllChapters(id) {
+    this.bookService.getBookAllChapters(id).subscribe(res => {
+      console.log(res);
+      if(res != null ) {
+        this.allChapters = res.mixToc.chapters;
       }
     });
   }
