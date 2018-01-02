@@ -1,3 +1,42 @@
-<p>
-  book-read works!
-</p>
+<div class="reader" >
+    <div class="row">
+        <div class="col-md-3 col-12"></div>
+        <div class="col-md-6 col-12 card">
+            <br/>
+            <header>
+                <h3>{{title}}</h3>
+                <hr/>
+            </header>
+            <br/>
+            <br/>
+            <div>
+                <pre>{{content}}</pre>
+            </div>
+            <br/>
+            <div class="row">
+                <div *ngIf="canNotLast" class="col-md-4 col-4">
+                    <button (click)="getNextOrLastChapter(false)" type="button" class="btn btn-outline-danger " disabled>上一章</button>
+                    <!-- <a class="button">上一章</a> -->
+                </div>
+                <div *ngIf="!canNotLast" class="col-md-4 col-4">
+                    <button (click)="getNextOrLastChapter(false)" type="button" class="btn btn-outline-danger ">上一章</button>
+                    <!-- <a class="button">上一章</a> -->
+                </div>
+                <div class="col-md-4 col-4">
+                    <button type="button" class="btn btn-outline-secondary">目录</button>
+                    <!-- <a class="button">目录</a> -->
+                </div>
+                <div *ngIf="canNotNext" class="col-md-4 col-4">
+                    <button (click)="getNextOrLastChapter(true)" type="button" class="btn btn-outline-success " disabled>下一章</button>
+                    <!-- <a class="button">下一章</a> -->
+                </div>
+                <div *ngIf="!canNotNext" class="col-md-4 col-4">
+                    <button (click)="getNextOrLastChapter(true)" type="button" class="btn btn-outline-success ">下一章</button>
+                    <!-- <a class="button">下一章</a> -->
+                </div>
+            </div>
+            <br/>
+        </div>
+        <div class="col-md-3 col-12"></div>
+    </div>
+</div>

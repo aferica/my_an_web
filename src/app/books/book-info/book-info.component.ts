@@ -12,6 +12,7 @@ import { AppConfig } from '../../config/apiConfig';
 })
 export class BookInfoComponent implements OnInit {
 
+  bookId = null;
   bookInfo = null;
   imgApi = AppConfig.IMGAPI;
   staticImg = AppConfig.static;
@@ -23,6 +24,7 @@ export class BookInfoComponent implements OnInit {
   chapterRow = 0;
   chaptersCount = 0;
   updateTime = '';
+  comments = null;
  
   overStar: number;
   percent: number;
@@ -35,9 +37,11 @@ export class BookInfoComponent implements OnInit {
 
   ngOnInit() {
     let id = this.route.params['value']['id'];
+    this.bookId = id;
     this.getBookInfo(id);
     this.getRelatedRecommendedBooks(id);
     this.getBookAllChapters(id);
+    this.getBookComments(id);
   }
 
   getBookInfo(id) {
@@ -70,6 +74,15 @@ export class BookInfoComponent implements OnInit {
     });
   }
 
+  getBookComments(id) {
+    this.bookService.getBookComments(id).subscribe(res => {
+      console.log(res);
+      if(res != null ) {
+        this.comments = res.reviews.splice(0,50);
+      }
+    });
+  }
+
   hoveringOver(value: number): void {
     this.overStar = value;
     this.percent = (value / this.max) * 100;
@@ -77,5 +90,17 @@ export class BookInfoComponent implements OnInit {
  
   resetStar(): void {
     this.overStar = void 0;
+  }
+
+  viewBookInfo(id) {
+    this.bookId = id;
+    this.getBookInfo(id);
+    this.getRelatedRecommendedBooks(id);
+    this.getBookAllChapters(id);
+    this.getBookComments(id);
+  }
+
+  readBook(number) {
+    this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: number}]);
   }
 }

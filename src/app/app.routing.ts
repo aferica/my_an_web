@@ -10,6 +10,7 @@ import { BookHistoryComponent } from './books/history/history.component';
 import { ImageViewComponent } from './images/image-view/image-view.component';
 import { ImageTypeComponent } from './images/image-type/image-type.component';
 import { BookInfoComponent } from './books/book-info/book-info.component';
+import { BookReadComponent } from './books/book-read/book-read.component';
 
 export const routes: Routes = [
   // {
@@ -35,6 +36,7 @@ export const routes: Routes = [
   { path: 'books/rank', component: BookRankComponent, data: {title: '排行榜'}},
   { path: 'books/hot', component: BookHotComponent, data: {title: '热门'}},
   { path: 'books/book-info', component: BookInfoComponent, data: {title: '书籍介绍'}},
+  { path: 'books/book-read', component: BookReadComponent, data: {title: '阅读书籍'}},
   { path: 'books/history', component: BookHistoryComponent, data: {title: '阅读记录'}},
   { path: 'images/image-view', component: ImageViewComponent, data: {title: '美图鉴赏'}},
   { path: 'images/image-type', component: ImageTypeComponent, data: {title: '美图类别'}},

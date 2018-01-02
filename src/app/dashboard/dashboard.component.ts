@@ -12,7 +12,7 @@ import { AppConfig } from '../config/apiConfig';
 })
 export class DashboardComponent {
 
-  bookIsCollapsed : boolean = true;
+  bookIsCollapsed : boolean = false;
   imageIsCollapsed : boolean = false;
 
   hotThreeBook = [];

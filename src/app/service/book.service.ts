@@ -10,6 +10,7 @@ import { AppConfig } from '../config/apiConfig';
 export class BookService {
 
   private API = AppConfig.API;
+  private EncodeAPI = AppConfig.EncodeAPI;
   private headers = new Headers({ 
     'Content-Type': 'application/json',
     'charset': 'UTF-8'});
@@ -41,6 +42,16 @@ export class BookService {
 
   getBookAllChapters(id): Observable<any> {
     return this.http.get(this.API  + AppConfig.book.bookChapters + '/' + id )
+      .map(res => res.json());
+  }
+
+  getBookComments(id): Observable<any> {
+    return this.http.get(this.API  + AppConfig.comment.commentInfo + '?book=' + id + '&sort=comment-count&limit=50')
+      .map(res => res.json());
+  }
+  
+  getBookChapterInfo(link): Observable<any> {
+    return this.http.get(this.EncodeAPI + AppConfig.book.chapterContent + '&encodeurl=' + encodeURIComponent(link))
       .map(res => res.json());
   }
 

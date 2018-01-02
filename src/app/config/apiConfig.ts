@@ -1,6 +1,7 @@
 export const AppConfig = {
 
-    API: 'http://39.108.63.38:3000/api/getboook/byurl?url=',
+    API: 'http://39.108.63.38:3000/api/getNoEncode/byurl?url=',
+    EncodeAPI: 'http://39.108.63.38:3000/api/getWithEncode/byurl?mainurl=',
     IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl?url=',
 
     static:'http://statics.zhuishushenqi.com',
@@ -25,7 +26,7 @@ export const AppConfig = {
         // 书源
         bookSources: 'http://api.zhuishushenqi.com/atoc', // query ?view=summary&book=5779b38d3b433dd647d95da2
         // 章节内容:id 单章id
-        chapterContent: 'http://chapter2.zhuishushenqi.com/chapter', //id: chapter id
+        chapterContent: 'http://chapter2.zhuishushenqi.com/chapter/', //id: chapter id
         // 书籍搜索 可以搜索作者但是不精确
         bookSearch: 'http://api.zhuishushenqi.com/book/fuzzy-search' //query ?query=凡人修仙传
     },

@@ -1,0 +1,23 @@
+.reader {
+    background-color: #FAF9DE ;
+    width: 100%
+}
+
+.card {
+    background-color: #FAF9DE ;
+}
+
+pre {
+    font-size: 1.25em;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    color: #262626;
+    line-height: 1.50em;
+}
+
+button {
+    font-size: 1.50em;
+    text-align: 'center';
+    height: 2em;
+    width: 100%
+}

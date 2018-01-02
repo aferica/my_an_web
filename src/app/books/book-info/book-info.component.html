@@ -7,18 +7,18 @@
         <img src="../../../assets/img/xianxia.jpg" width="100%"/>
     </header>
     <div class="row">
-    <div class="col-md-3 col-0">
+    <div class="col-md-2 col-0">
         
     </div>
-    <div class="col-md-6 col-12">
+    <div class="col-md-8 col-12">
         <div class="row">
-            <div class="col-md-2 col-4">
+            <div class="col-md-2 col-12">
               <br/>
               <div align="center">
-              <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}" width="100%" style="text-align: center; "/>
+              <img src="{{imgApi}}{{staticImg}}{{bookInfo.cover}}" width="90%" style="text-align: center; max-width: 120px"/>
              </div>
             </div>
-            <div class="col-md-7 col-8">
+            <div class="col-md-7 col-12">
               <br/>
               <h5><b>{{bookInfo.title}}</b></h5>
               <div>
@@ -35,9 +35,9 @@
                 &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp;<a>好评率：{{bookInfo.retentionRatio}}%</a>
               </div>
               <div>
-                <button type="button" class="btn btn-danger">开始阅读</button>
-                <button type="button" class="btn btn-primary">加入书架</button>
-                <button type="button" class="btn btn-info">投票支持</button>
+                <button (click)="readBook(0)" type="button" class="btn btn-outline-danger">开始阅读</button>
+                <button type="button" class="btn btn-outline-primary">加入书架</button>
+                <!-- <button type="button" class="btn btn-info">投票支持</button> -->
               </div>
             </div>
             <div class="col-md-3 col-12" align="right">
@@ -115,14 +115,33 @@
                     </div>
                   </div>
                 </tab>
-                <tab heading="章节目录(共{{chaptersCount}}章)">
-                  <div class="list-group" >
-                    <li *ngFor="let chapter of allChapters" class="list-group-item">
-                        <a>{{chapter.title}}</a>
-                    </li>
+                <tab heading="目录(共{{chaptersCount}}章)">
+                  <div class=" row" >
+                    <div *ngFor="let chapter of allChapters; let i = index;" class=" col-md-6 col-12">
+                        <a (click)="readBook(i)" style="font-size: 1.25em">{{chapter.title}}</a>
+                    </div>
                   </div>
                 </tab>
-                <tab heading="书友评论">Static content 2</tab>
+                <tab heading="书友评论">
+                  <div class="list-group">
+                    <a  *ngFor="let comment of comments" class="list-group-item">
+                      <div class="row">
+                        <div class="col-md-2 col-12" style="text-align:center">
+                          <img style="height:5em; width: 5em; border-radius:5em;" src="{{imgApi}}{{staticImg}}{{comment.author.avatar}}" /><br/>
+                          <a style="color:dodgerblue; font-size: 0.75em">{{comment.author.nickname}}</a>
+                        </div>
+                        <div class="col-md-10 col-12">
+                          <div><a style=" font-size: 1.25em">{{comment.title}}</a>
+                            <i class="icon-dislike pull-right" style="color:red">{{comment.helpful.no}}</i>
+                            <i class="icon-like pull-right" style="color:red">{{comment.helpful.yes}}&nbsp;&nbsp;&nbsp;</i>
+                          </div>
+                          <br/>
+                          <p>{{comment.content}}</p>
+                        </div>
+                      </div>
+                    </a>
+                  </div>
+                </tab>
               </tabset>
           </div>
           <div class="col-md-4 col-12 card" style="background-color:#eee9e2">
@@ -131,13 +150,13 @@
                 <h6>你可能喜欢...</h6>
               </header>
               <div class="list-group">
-                <a href="#"  *ngFor="let book of relatedBooks; let i = index;" class="list-group-item">
+                <a  *ngFor="let book of relatedBooks; let i = index;" class="list-group-item">
                   <div class="row">
                     <div class="col-md-4 col-4">
                         <img src="{{imgApi}}{{staticImg}}{{book.cover}}" width="75"/>
                     </div>
                     <div class="col-md-8 col-8">
-                        <h5>
+                        <h5 (click)="viewBookInfo(book._id)">
                             <span>{{book.title}}</span>
                         </h5>
                         <p>
@@ -151,7 +170,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-3 col-0">
+    <div class="col-md-2 col-0">
         
     </div>
   </div>
