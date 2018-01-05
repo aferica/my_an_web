@@ -19,6 +19,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { PaginationModule } from 'ngx-bootstrap/pagination';
 
 import { LazyLoadImageModule } from 'ng-lazyload-image';
 
@@ -48,6 +49,7 @@ import { BookClassComponent } from './books/book-class/book-class.component';
     TooltipModule.forRoot(),
     RatingModule.forRoot(),
     CollapseModule.forRoot(),
+    PaginationModule.forRoot(),
     LazyLoadImageModule,
     // ChartsModule,
     HttpModule

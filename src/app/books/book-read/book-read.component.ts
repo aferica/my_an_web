@@ -48,7 +48,8 @@ export class BookReadComponent implements OnInit {
     this.bookService.getBookChapterInfo(chapter.link).subscribe(res => {
       console.log(res);
       if(res != null && res.ok) {
-        this.content = '\u3000\u3000' + res.chapter.body.replace(/\n/g, '\r\n\u3000\u3000');       
+        this.content = '\u3000\u3000' + res.chapter.body.replace(/\n/g, '\r\n\u3000\u3000');
+        window.scrollTo(0, 0);       
       }
     });
   }
@@ -57,14 +58,12 @@ export class BookReadComponent implements OnInit {
     if(isNext ) {
       this.chapterNumber = this.chapterNumber*1 + 1;
       this.changeNextAndLastButtonState();
-      window.scrollTo(0, 0);
       this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
       this.getBookChapterInfo(this.allChapters[this.chapterNumber]);
     } 
     if(!isNext ) {
       this.chapterNumber = this.chapterNumber*1 - 1;
       this.changeNextAndLastButtonState();
-      window.scrollTo(0, 0);
       this.getBookChapterInfo(this.allChapters[this.chapterNumber]);
       this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
     }

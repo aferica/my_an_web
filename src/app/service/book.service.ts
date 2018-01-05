@@ -46,7 +46,7 @@ export class BookService {
   }
 
   getBookComments(id): Observable<any> {
-    return this.http.get(this.API  + AppConfig.comment.commentInfo + '?book=' + id + '&sort=comment-count&limit=50')
+    return this.http.get(this.API  + encodeURIComponent (AppConfig.comment.commentInfo + '?book=' + id + '&sort=comment-count&limit=50'))
       .map(res => res.json());
   }
   
@@ -55,8 +55,8 @@ export class BookService {
       .map(res => res.json());
   }
 
-  getBooksByClass(majorCate, minorCate): Observable<any> {
-    return this.http.get(this.API + AppConfig.category.categoryInfo + '?major=' + majorCate + '&minor=' + minorCate)
+  getBooksByClass(majorCate, minorCate, currentPage): Observable<any> {
+    return this.http.get(this.API + encodeURIComponent (AppConfig.category.categoryInfo + '?limit=20&start=' + (currentPage -1 ) * 20 + '&major=' + majorCate + '&minor=' + minorCate))
       .map(res => res.json());
   }
 }
