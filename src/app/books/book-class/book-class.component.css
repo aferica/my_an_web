@@ -1,0 +1,44 @@
+.cates {
+    background-color: bisque;
+    font-size: 0.85em;
+}
+
+.tags {
+    height: 1.2em;
+    padding: 0.07em;
+    color: #ffffff;
+    line-height: 2em;
+    text-align: center;
+}
+
+.sort {
+    background-color: #d3d3d3;
+    height: 2em;
+    text-align: center;
+    color: #737374;
+    margin:0 auto;
+    padding-top: 0.25em;
+    padding-bottom: 0.25em;
+}
+
+
+.grey {
+    color: #737374;
+}
+
+.cover {
+    text-align: center; 
+    max-width: 120px;
+    padding-left: auto;
+    padding-right: auto;
+}
+
+.shortIntro{
+    width:100%;
+     margin:20px auto;
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp:2;
+    -webkit-box-orient: vertical;
+}

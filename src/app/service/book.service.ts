@@ -55,4 +55,8 @@ export class BookService {
       .map(res => res.json());
   }
 
+  getBooksByClass(majorCate, minorCate): Observable<any> {
+    return this.http.get(this.API + AppConfig.category.categoryInfo + '?major=' + majorCate + '&minor=' + minorCate)
+      .map(res => res.json());
+  }
 }

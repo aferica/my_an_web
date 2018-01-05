@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router,ActivatedRoute } from '@angular/router';
 
 import { BookService } from '../../service/book.service';
 import { AppConfig } from '../../config/apiConfig';
@@ -14,7 +15,9 @@ export class BookRankComponent implements OnInit {
   males = [];
 
   constructor(
-    private bookService: BookService
+    private bookService: BookService,
+    private route: ActivatedRoute,
+    private router: Router
   ) { }
 
   ngOnInit() {
@@ -51,5 +54,9 @@ export class BookRankComponent implements OnInit {
         }
       }
     })
+  }
+
+  viewThisBook(id) {
+    this.router.navigate(['/books/book-info', {id: id}]);
   }
 }

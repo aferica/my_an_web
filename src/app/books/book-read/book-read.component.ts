@@ -58,7 +58,7 @@ export class BookReadComponent implements OnInit {
       this.chapterNumber = this.chapterNumber*1 + 1;
       this.changeNextAndLastButtonState();
       window.scrollTo(0, 0);
-      // this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
+      this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
       this.getBookChapterInfo(this.allChapters[this.chapterNumber]);
     } 
     if(!isNext ) {
@@ -66,7 +66,7 @@ export class BookReadComponent implements OnInit {
       this.changeNextAndLastButtonState();
       window.scrollTo(0, 0);
       this.getBookChapterInfo(this.allChapters[this.chapterNumber]);
-      // this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
+      this.router.navigate(['/books/book-read', {bookId: this.bookId, chapterNumber: this.chapterNumber}]);
     }
   }
 

@@ -116,10 +116,15 @@
                   </div>
                 </tab>
                 <tab heading="目录(共{{chaptersCount}}章)">
+
+                  <div class="list-group">
                   <div class=" row" >
-                    <div *ngFor="let chapter of allChapters; let i = index;" class=" col-md-6 col-12">
-                        <a (click)="readBook(i)" style="font-size: 1.25em">{{chapter.title}}</a>
+                    <div *ngFor="let chapter of allChapters; let i = index;" class=" list-group-item col-md-6 col-12">
+                      <div class="">
+                          <a (click)="readBook(i)" style="font-size: 1.05em">{{chapter.title}}</a>
+                        </div>
                     </div>
+                  </div>
                   </div>
                 </tab>
                 <tab heading="书友评论">

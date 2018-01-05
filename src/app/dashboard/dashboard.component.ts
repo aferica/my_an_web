@@ -59,6 +59,10 @@ export class DashboardComponent {
     this.router.navigate(['/books/book-info', {id: id}]);
   }
 
+  viewBookCategory(majorCate, minorCate) {
+    this.router.navigate(['/books/book-class', {majorCate: majorCate, minorCate: minorCate}]);
+  }
+
   changeCollapse(name) {
     if(name == 'book') {
       this.bookIsCollapsed = !this.bookIsCollapsed; 

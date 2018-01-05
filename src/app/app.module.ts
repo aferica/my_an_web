@@ -35,6 +35,7 @@ import { ImageViewComponent } from './images/image-view/image-view.component';
 import { ImageTypeComponent } from './images/image-type/image-type.component';
 import { BookInfoComponent } from './books/book-info/book-info.component';
 import { BookReadComponent } from './books/book-read/book-read.component';
+import { BookClassComponent } from './books/book-class/book-class.component';
 
 @NgModule({
   imports: [
@@ -65,7 +66,8 @@ import { BookReadComponent } from './books/book-read/book-read.component';
     ImageViewComponent,
     ImageTypeComponent,
     BookInfoComponent,
-    BookReadComponent
+    BookReadComponent,
+    BookClassComponent
   ],
   providers: [{
     provide: LocationStrategy,

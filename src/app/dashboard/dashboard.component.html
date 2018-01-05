@@ -37,7 +37,8 @@
           </div>
         </a>
         <li *ngFor="let book of books; let i = index;" class="list-group-item">
-            <a (click)="viewBookInfo(book._id)">{{i + 4}}.  {{book.title}}</a>
+          <a (click)="viewBookCategory(book.majorCate,book.minorCate)"><span style="font-size:0.95em; color:#737374">[{{book.minorCate}}]</span></a>
+            <a (click)="viewBookInfo(book._id)">{{book.title}}</a>
             <a (click)="viewAuthorInfo(book._id)"><span class="pull-right">{{book.author}}</span></a>
         </li>
       </div>
