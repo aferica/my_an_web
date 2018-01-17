@@ -31,12 +31,14 @@ export class ImageViewComponent implements OnInit {
   getPictures(id) {
     this.imageService.getImageView(id).subscribe (res=> {
       // console.log(res);
-      this.title = res[0].title;
-      this.tags = res[0].tags;
-      for(let url of res[0].image_url) {
-        url = this.ImageUrl + url;
-        this.images.push(url);
-      }     
+      if(res != null && res.code == 0) {
+        this.title = res.data[0].title;
+        this.tags = res.data[0].tags;
+        for(let url of res.data[0].image_url) {
+          url = this.ImageUrl + url;
+          this.images.push(url);
+        } 
+      }    
     });
   }
 

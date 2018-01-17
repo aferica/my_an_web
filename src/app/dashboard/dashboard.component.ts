@@ -45,8 +45,8 @@ export class DashboardComponent {
   getHotImages() {
     this.imageService.getHotImages().subscribe(res => {
       // console.log(res);
-      if(res != null) {
-        this.images = res;
+      if(res != null && res.code == 0) {
+        this.images = res.data;
       }
     });
   }

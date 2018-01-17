@@ -1,10 +1,10 @@
 
-<div class="card row">
+<div class="card row" style="margin:2px">
     <br/>
     <header>
-      <h5>{{title}}</h5>
+      <h5 style="text-align:center">{{title}}</h5>
     </header>
-    <div>
+    <div style="text-align:center">
         <a *ngFor="let tag of tags">
             <a  href="#" (click)="findByTag(tag);false" 
             *ngIf="tag!=''" class="badge badge-primary badge-pill" style="color:white">{{tag}}</a>

@@ -1,4 +1,4 @@
-<br/>
+<!-- <br/> -->
 <div class="card ">
   <div class="row">
   <div class="col-md-2 col-0">
@@ -14,34 +14,35 @@
           <header><h4>男生</h4><hr/></header>
           
           <div class="row">
-            <a *ngFor="let cate of allCategories.male" class="col-md-4 col-4">
-              <!-- <div ><button type="button" class="btn btn-outline-primary">{{cate.major}}</button></div> -->
-               <a class="tags">{{cate.major}}</a> 
-                <!-- <button type="button" class="btn btn-outline-primary">{{cate.major}}</button> -->
+            <a *ngFor="let cate of allCategories.male" class="tags col-md-4 col-4">
+               <a *ngIf="cate.major == majorCate" class="selecttags">{{cate.major}}</a>
+               <a *ngIf="cate.major != majorCate" class="tags">{{cate.major}}</a> 
             </a>
           </div>
+          <br/>
         </div>
         <div class="card ">
             <br/>
             <header><h4>女生</h4><hr/></header>
             
             <div class="row">
-              <a *ngFor="let cate of allCategories.female" class="col-md-4 col-4">
+              <a *ngFor="let cate of allCategories.female" class="tags col-md-4 col-4">
                 <!-- <div ><button type="button" class="btn btn-outline-primary">{{cate.major}}</button></div> -->
                  <a class="tags">{{cate.major}}</a> 
                   <!-- <button type="button" class="btn btn-outline-primary">{{cate.major}}</button> -->
               </a>
             </div>
+            <br/>
           </div>
       </div>
       <div class="books col-md-9 col-12">
-        <div class="card sort">
+        <div class="sort card">
           <div class="row">
-              <a class="col-md-2 col-4">热度排序</a>
-              <a class="col-md-2 col-4">更新时间</a>
-              <a class="col-md-2 col-4">评分排名</a>
-              <a class="col-md-2 col-4">已经完结</a>
-              <a class="col-md-4 col-8"><span class="pull-right">共<b style="color:red;">{{totalNumber}}</b>本相关作品</span></a>
+              <a class="col-md-2 col-3">热度排序</a>
+              <a class="col-md-2 col-3">更新时间</a>
+              <a class="col-md-2 col-3">评分排名</a>
+              <a class="col-md-2 col-3">已经完结</a>
+              <a class="col-md-4 col-12"><span class="pull-right">共<b style="color:red;">{{totalNumber}}</b>本相关作品</span></a>
           </div>
         </div>
         <br/>

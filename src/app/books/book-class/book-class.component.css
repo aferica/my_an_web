@@ -4,12 +4,17 @@
 }
 
 .tags {
-    height: 1.2em;
     padding: 0.07em;
     color: #ffffff;
-    line-height: 2em;
     text-align: center;
 }
+
+.selecttags {
+    padding: 0.07em;
+    color: red;
+    text-align: center;
+}
+
 
 .sort {
     background-color: #d3d3d3;
