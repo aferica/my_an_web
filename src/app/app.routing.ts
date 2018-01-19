@@ -12,10 +12,12 @@ import { ImageTypeComponent } from './images/image-type/image-type.component';
 import { BookInfoComponent } from './books/book-info/book-info.component';
 import { BookReadComponent } from './books/book-read/book-read.component';
 import { BookClassComponent } from './books/book-class/book-class.component';
+import { HomeComponent } from './home/home.component';
 
 export const routes: Routes = [
-  { path: '', component: DashboardComponent, data: {title: '主页'}},
-  { path: 'home', component: DashboardComponent, data: {title: '主页'}},
+  { path: '', component: HomeComponent, data: {title: '首页'}},
+  { path: 'home', component: HomeComponent, data: {title: '首页'}},
+  { path: 'main', component: DashboardComponent, data: {title: '主页'}},
   { path: 'books/rank', component: BookRankComponent, data: {title: '排行榜'}},
   { path: 'books/hot', component: BookHotComponent, data: {title: '热门'}},
   { path: 'books/book-info', component: BookInfoComponent, data: {title: '书籍介绍'}},

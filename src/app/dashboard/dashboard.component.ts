@@ -6,7 +6,7 @@ import { ImageService } from '../service/image.service';
 import { AppConfig } from '../config/apiConfig';
 
 @Component({
-  selector: 'app-home',
+  selector: 'app-dashboard',
   templateUrl: 'dashboard.component.html',
   providers: [BookService, ImageService]
 })

@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'app-layout',
   templateUrl: './full-layout.component.html'
 })
 export class FullLayoutComponent implements OnInit {
