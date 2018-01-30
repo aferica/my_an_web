@@ -1,8 +1,8 @@
 export const AppConfig = {
 
-    API: 'http://39.108.63.38:3000/api/getNoEncode/byurl?url=',
-    EncodeAPI: 'http://39.108.63.38:3000/api/getWithEncode/byurl?mainurl=',
-    IMGAPI: 'http://39.108.63.38:3000/api/getimg/byurl?url=',
+    API: 'https://www.aferica.wang/api/getNoEncode/byurl?url=',
+    EncodeAPI: 'https://www.aferica.wang/api/getWithEncode/byurl?mainurl=',
+    IMGAPI: 'https://www.aferica.wang/api/getimg/byurl?url=',
 
     static:'http://statics.zhuishushenqi.com',
     category: {
@@ -70,10 +70,10 @@ export const AppConfig = {
         bookListInfo: 'http://api.zhuishushenqi.com/book-list/' //书单ID
     },
     photo: {
-        getPictureByTagsOr: 'http://39.108.63.38:3000/api/picture/getPictureByTagsOr',
-        getPictureByTagsAnd: 'http://39.108.63.38:3000/api/picture/getPictureByTagsAnd',
-        getPictureById: 'http://39.108.63.38:3000/api/picture/getPicture',
-        getPictureNumber: 'http://39.108.63.38:3000/api/picture/getPictureNumber'
+        getPictureByTagsOr: 'https://www.aferica.wang/api/picture/getPictureByTagsOr',
+        getPictureByTagsAnd: 'https://www.aferica.wang/api/picture/getPictureByTagsAnd',
+        getPictureById: 'https://www.aferica.wang/api/picture/getPicture',
+        getPictureNumber: 'https://www.aferica.wang/api/picture/getPictureNumber'
     }
 
 }
